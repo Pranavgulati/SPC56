@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include "common.h"
 #include "me.h"
+#include "pit.h"
 #include "interrupts56xx.h"
 #include "flexcan.h"
 

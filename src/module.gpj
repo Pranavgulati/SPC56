@@ -2,6 +2,7 @@
 #component hello_world_c
 [Program]
 	-object_dir=${%option_value(-object_dir)}/module
+crt0.S
 tgt\SPC56EL70.ld
 intc.c
 main.c
