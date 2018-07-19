@@ -1,0 +1,8 @@
+target_connection.0.type="Simulator for Power Architecture (simppc)"
+target_connection.0.short_type="simppc"
+target_connection.0.args=" -cpu=ppc564xl   "
+target_connection.0.title="ST SPC564 Demo Board SPC56ELxx with Simulator for Power Architecture (simppc)"
+target_connection.0.command="simppc  -cpu=ppc564xl   "
+target_connection.0.logfile="simppc"
+target_connection.0.log=""
+target_connection.0.sane="no"
