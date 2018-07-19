@@ -1,0 +1,4 @@
+src/boot.o
+src/crt0.o
+src/isrvectab.o
+src/main.o

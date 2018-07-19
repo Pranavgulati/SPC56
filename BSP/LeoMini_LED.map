@@ -1,0 +1,646 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrti.o
+ .data          0x00000000        0x0 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrti.o
+ .bss           0x00000000        0x0 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrti.o
+ .init          0x00000000        0xc c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrti.o
+ .fini          0x00000000        0xc c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrti.o
+ .text          0x00000000       0x20 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .data          0x00000000        0x8 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .bss           0x00000000        0x8 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .ctors         0x00000000        0x4 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .dtors         0x00000000        0x4 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .jcr           0x00000000        0x0 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .text.__do_global_dtors_aux
+                0x00000000       0x8c c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .text.call___do_global_dtors_aux
+                0x00000000        0xc c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .fini          0x00000000        0x4 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .text.frame_dummy
+                0x00000000       0x48 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .text.call_frame_dummy
+                0x00000000        0xc c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .init          0x00000000        0x4 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .text          0x00000000        0x0 src\crt0.o
+ .data          0x00000000        0x0 src\crt0.o
+ .bss           0x00000000        0x0 src\crt0.o
+ .text_vle      0x00000000        0x0 src\crt0.o
+ .text          0x00000000        0x0 src\flexcan.o
+ .data          0x00000000        0x0 src\flexcan.o
+ .bss           0x00000000        0x0 src\flexcan.o
+ .text_vle      0x00000000      0xbbe src\flexcan.o
+ .text          0x00000000        0x0 src\intc.o
+ .data          0x00000000        0x0 src\intc.o
+ .bss           0x00000000        0x0 src\intc.o
+ .text          0x00000000        0x0 src\main.o
+ .data          0x00000000        0x0 src\main.o
+ .bss           0x00000000        0x0 src\main.o
+ .text          0x00000000        0x0 src\me.o
+ .data          0x00000000        0x0 src\me.o
+ .bss           0x00000000        0x0 src\me.o
+ .text          0x00000000        0x0 src\pit.o
+ .data          0x00000000        0x0 src\pit.o
+ .text          0x00000000       0x10 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+ .data          0x00000000        0x4 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+ .bss           0x00000000        0x0 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+ .ctors         0x00000000        0x4 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+ .dtors         0x00000000        0x4 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+ .jcr           0x00000000        0x4 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+ .text.__do_global_ctors_aux
+                0x00000000       0x44 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+ .text.call___do_global_ctors_aux
+                0x00000000        0xc c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+ .init          0x00000000        0x4 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+ .text          0x00000000        0x0 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrtn.o
+ .data          0x00000000        0x0 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrtn.o
+ .bss           0x00000000        0x0 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrtn.o
+ .init          0x00000000       0x10 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrtn.o
+ .fini          0x00000000       0x10 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrtn.o
+
+----- BEGIN EXTENDED MAP LISTING -----
+
+>>> Linker and link run information
+
+Linker version: GNU ld version (GNU Binutils) 2.20 (ppc-vle) using BFD version (GNU Binutils) 2.20 (v2.4), Tool Version v2.1
+Name of linker executable: c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/../../../../ppc-ht-eabi/bin/ld.exe
+Date of link run: Thu Apr 28 16:33:16 2016
+Name of linker map file: LeoMini_LED.map
+
+>>> Symbols (global (S = g) and static (S = l); sorted by address)
+
+===============================================================================================================
+Start      End        Size S Name                       Memory O-Sec           I-Sec            Input object   
+===============================================================================================================
+0x00000000 0x00000000    0 g __irq_stack_size__         *ABS*  *ABS*           *ABS*            *ABS*
+0x00000008 0x00000008    0 g __flash_start__            *ABS*  *ABS*           *ABS*            *ABS*
+0x00000800 0x00000800    0 g __process_stack_size__     *ABS*  *ABS*           *ABS*            *ABS*
+0x00001000 0x00001000    0 l IVOR0ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001000 0x000010f5  246 g IVOR_table                 flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001000 0x00001000    0 g __IVPR_BASE_               flash  .isrVectorTable .isrVectorTable  LeoMini_LED.elf
+0x00001010 0x00001010    0 l IVOR1ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001020 0x00001020    0 l IVOR2ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001030 0x00001030    0 l IVOR3ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001040 0x00001040    0 l IVOR4ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001050 0x00001050    0 l IVOR5ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001060 0x00001060    0 l IVOR6ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001070 0x00001070    0 l IVOR7ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001080 0x00001080    0 l IVOR8ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001090 0x00001090    0 l IVOR9ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010a0 0x000010a0    0 l IVOR10ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010b0 0x000010b0    0 l IVOR11ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010c0 0x000010c0    0 l IVOR12ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010d0 0x000010d0    0 l IVOR13ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010e0 0x000010e0    0 l IVOR14ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010f0 0x000010f0    0 l IVOR15ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001800 0x00001bff 1024 g IsrVectorTable             flash  .isrVectorTable .interrupt_table src\intc.o
+0x00001800 0x00001800    0 g __ISR_BASE_                flash  .isrVectorTable .isrVectorTable  LeoMini_LED.elf
+0x00001c00 0x00001c00    0 g _reset_address             flash  .code           .crt0            src\crt0.o
+0x00001c00 0x00001c00    0 g _reset_address:            flash  .code           .code            LeoMini_LED.elf
+0x00001c0a 0x00001c0a    0 l _ramcode                   flash  .code           .crt0            src\crt0.o
+0x00001c12 0x00001c12    0 l _coreinit                  flash  .code           .crt0            src\crt0.o
+0x00002094 0x00002094    0 l .cleareccloop              flash  .code           .crt0            src\crt0.o
+0x000020a2 0x000020a2    0 l .cleareccend               flash  .code           .crt0            src\crt0.o
+0x0000215c 0x0000215c    0 l .read_status               flash  .code           .crt0            src\crt0.o
+0x00002176 0x00002176    0 l .read_cf0                  flash  .code           .crt0            src\crt0.o
+0x00002192 0x00002192    0 l .read_cf1                  flash  .code           .crt0            src\crt0.o
+0x000021ae 0x000021ae    0 l .read_ncf                  flash  .code           .crt0            src\crt0.o
+0x000021d0 0x000021d0    0 l fccu_stcu_error            flash  .code           .crt0            src\crt0.o
+0x000021d2 0x000021d2    0 l fccu_analyze               flash  .code           .crt0            src\crt0.o
+0x000021d4 0x000021d4    0 l fccu_clear                 flash  .code           .crt0            src\crt0.o
+0x000021e4 0x000021e4    0 l .wait_cf0_clear            flash  .code           .crt0            src\crt0.o
+0x00002200 0x00002200    0 l .wait_cf1_clear            flash  .code           .crt0            src\crt0.o
+0x0000221c 0x0000221c    0 l .wait_ncf_clear            flash  .code           .crt0            src\crt0.o
+0x0000222a 0x0000222a    0 l fccu_no_fault              flash  .code           .crt0            src\crt0.o
+0x0000223a 0x0000223a    0 l fccu_end                   flash  .code           .crt0            src\crt0.o
+0x00002258 0x00002258    0 l rgm_des_handler            flash  .code           .crt0            src\crt0.o
+0x0000225a 0x0000225a    0 l rgm_clear                  flash  .code           .crt0            src\crt0.o
+0x0000225a 0x0000225a    0 l rgm_fes_handler            flash  .code           .crt0            src\crt0.o
+0x00002266 0x00002266    0 l rgm_end                    flash  .code           .crt0            src\crt0.o
+0x00002274 0x00002274    0 l .inv                       flash  .code           .crt0            src\crt0.o
+0x0000228c 0x0000228c    0 l _ivinit                    flash  .code           .crt0            src\crt0.o
+0x00002320 0x00002320    0 g _boot_address              flash  .code           .crt0            src\crt0.o
+0x00002354 0x00002354    0 l .bssloop                   flash  .code           .crt0            src\crt0.o
+0x0000235e 0x0000235e    0 l .bssend                    flash  .code           .crt0            src\crt0.o
+0x00002376 0x00002376    0 l .dataloop                  flash  .code           .crt0            src\crt0.o
+0x00002384 0x00002384    0 l .dataend                   flash  .code           .crt0            src\crt0.o
+0x00002390 0x00002390    0 g _main_exit_handler         flash  .code           .crt0            src\crt0.o
+0x00002394 0x00002394    0 g __early_init               flash  .code           .crt0            src\crt0.o
+0x00002396 0x00002396    0 g __late_init                flash  .code           .crt0            src\crt0.o
+0x00002398 0x0000239b    4 g unhandled_IVOR             flash  .code           .text_vle        src\intc.o
+0x0000239c 0x0000239d    2 g unhandled_ISR              flash  .code           .text_vle        src\intc.o
+0x0000239e 0x0000239e    0 l IVOR4Handler               flash  .code           .text_vle        src\intc.o
+0x0000239e 0x000023ed   80 g Interrupt_SW               flash  .code           .text_vle        src\intc.o
+0x0000239e 0x0000239e    0 l prolog                     flash  .code           .text_vle        src\intc.o
+0x000023c6 0x000023c6    0 l epilog                     flash  .code           .text_vle        src\intc.o
+0x000023ee 0x00002403   22 g initSwIrq4                 flash  .code           .text_vle        src\intc.o
+0x00002404 0x00002419   22 g SwIrq4Handler              flash  .code           .text_vle        src\intc.o
+0x0000241a 0x00002433   26 g enableIrq                  flash  .code           .text_vle        src\intc.o
+0x00002434 0x0000243d   10 g dummy                      flash  .code           .text_vle        src\intc.o
+0x0000243e 0x00002497   90 g INTC_Init                  flash  .code           .text_vle        src\intc.o
+0x00002498 0x00002575  222 g AIPS_Init                  flash  .code           .text_vle        src\main.o
+0x00002576 0x0000261f  170 g main                       flash  .code           .text_vle        src\main.o
+0x00002620 0x0000267f   96 g ME_ModeTransition          flash  .code           .text_vle        src\me.o
+0x00002680 0x000027fb  380 g Clock_Init                 flash  .code           .text_vle        src\me.o
+0x000027fc 0x0000290b  272 g ME_Init                    flash  .code           .text_vle        src\me.o
+0x0000290c 0x00002969   94 g PIT_ISR                    flash  .code           .text_vle        src\pit.o
+0x0000296a 0x000029bb   82 g PIT_Init                   flash  .code           .text_vle        src\pit.o
+0x000029c0 0x000029c0    0 g __romdata_start__          flash  .code           .code            LeoMini_LED.elf
+0x0000a9c0 0x0000a9c0    0 g __sdata2_start__           flash  .code           .code            LeoMini_LED.elf
+0x00020000 0x00020000    0 g __ram_size__               *ABS*  *ABS*           *ABS*            *ABS*
+0x000ffff8 0x000ffff8    0 g __flash_size__             *ABS*  *ABS*           *ABS*            *ABS*
+0x00100000 0x00100000    0 g __flash_end__              *ABS*  *ABS*           *ABS*            *ABS*
+0x02000000 0x02000000    0 l MSR_Mask                   *ABS*  *ABS*           *ABS*            *ABS*
+0x40000000 0x40000000    0 g __irq_stack_base__         ram    .stacks         .stacks          LeoMini_LED.elf
+0x40000000 0x40000000    0 g __irq_stack_end__          ram    .stacks         .stacks          LeoMini_LED.elf
+0x40000000 0x40000000    0 g __main_thread_stack_base__ ram    .stacks         .stacks          LeoMini_LED.elf
+0x40000000 0x40000000    0 g __process_stack_base__     ram    .stacks         .stacks          LeoMini_LED.elf
+0x40000000 0x40000000    0 g __ram_start__              *ABS*  *ABS*           *ABS*            *ABS*
+0x40000800 0x40000803    4 l Pit0Ctr.8915               ram    .bss            .bss             src\pit.o
+0x40000800 0x40000800    0 g __bss_start__              ram    .bss            .bss             LeoMini_LED.elf
+0x40000800 0x40000800    0 g __data_end__               ram    .bss            .bss             LeoMini_LED.elf
+0x40000800 0x40000800    0 g __data_start__             ram    .bss            .bss             LeoMini_LED.elf
+0x40000800 0x40000800    0 g __main_thread_stack_end__  ram    .stacks         .stacks          LeoMini_LED.elf
+0x40000800 0x40000800    0 g __process_stack_end__      ram    .stacks         .stacks          LeoMini_LED.elf
+0x40000804 0x40000804    0 g __bss_end__                ram    .bss            .bss             LeoMini_LED.elf
+0x40000804 0x40000804    0 g __heap_base__              ram    .bss            .bss             LeoMini_LED.elf
+0x40008800 0x40008800    0 g __sdata_start__            ram    .bss            .bss             LeoMini_LED.elf
+0x40020000 0x40020000    0 g __heap_end__               *ABS*  *ABS*           *ABS*            *ABS*
+0x40020000 0x40020000    0 g __ram_end__                *ABS*  *ABS*           *ABS*            *ABS*
+0xfc040028 0xfc040028    0 l INTC_IACKR2                *ABS*  *ABS*           *ABS*            *ABS*
+0xfc040038 0xfc040038    0 l INTC_EOIR2                 *ABS*  *ABS*           *ABS*            *ABS*
+
+>>> Symbols (global (S = g) and static (S = l); sorted by name)
+
+===============================================================================================================
+Start      End        Size S Name                       Memory O-Sec           I-Sec            Input object   
+===============================================================================================================
+0x0000235e 0x0000235e    0 l .bssend                    flash  .code           .crt0            src\crt0.o
+0x00002354 0x00002354    0 l .bssloop                   flash  .code           .crt0            src\crt0.o
+0x000020a2 0x000020a2    0 l .cleareccend               flash  .code           .crt0            src\crt0.o
+0x00002094 0x00002094    0 l .cleareccloop              flash  .code           .crt0            src\crt0.o
+0x00002384 0x00002384    0 l .dataend                   flash  .code           .crt0            src\crt0.o
+0x00002376 0x00002376    0 l .dataloop                  flash  .code           .crt0            src\crt0.o
+0x00002274 0x00002274    0 l .inv                       flash  .code           .crt0            src\crt0.o
+0x00002176 0x00002176    0 l .read_cf0                  flash  .code           .crt0            src\crt0.o
+0x00002192 0x00002192    0 l .read_cf1                  flash  .code           .crt0            src\crt0.o
+0x000021ae 0x000021ae    0 l .read_ncf                  flash  .code           .crt0            src\crt0.o
+0x0000215c 0x0000215c    0 l .read_status               flash  .code           .crt0            src\crt0.o
+0x000021e4 0x000021e4    0 l .wait_cf0_clear            flash  .code           .crt0            src\crt0.o
+0x00002200 0x00002200    0 l .wait_cf1_clear            flash  .code           .crt0            src\crt0.o
+0x0000221c 0x0000221c    0 l .wait_ncf_clear            flash  .code           .crt0            src\crt0.o
+0x00002498 0x00002575  222 g AIPS_Init                  flash  .code           .text_vle        src\main.o
+0x00002680 0x000027fb  380 g Clock_Init                 flash  .code           .text_vle        src\me.o
+0xfc040038 0xfc040038    0 l INTC_EOIR2                 *ABS*  *ABS*           *ABS*            *ABS*
+0xfc040028 0xfc040028    0 l INTC_IACKR2                *ABS*  *ABS*           *ABS*            *ABS*
+0x0000243e 0x00002497   90 g INTC_Init                  flash  .code           .text_vle        src\intc.o
+0x00001000 0x00001000    0 l IVOR0ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010a0 0x000010a0    0 l IVOR10ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010b0 0x000010b0    0 l IVOR11ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010c0 0x000010c0    0 l IVOR12ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010d0 0x000010d0    0 l IVOR13ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010e0 0x000010e0    0 l IVOR14ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x000010f0 0x000010f0    0 l IVOR15ex                   flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001010 0x00001010    0 l IVOR1ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001020 0x00001020    0 l IVOR2ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001030 0x00001030    0 l IVOR3ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x0000239e 0x0000239e    0 l IVOR4Handler               flash  .code           .text_vle        src\intc.o
+0x00001040 0x00001040    0 l IVOR4ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001050 0x00001050    0 l IVOR5ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001060 0x00001060    0 l IVOR6ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001070 0x00001070    0 l IVOR7ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001080 0x00001080    0 l IVOR8ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001090 0x00001090    0 l IVOR9ex                    flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x00001000 0x000010f5  246 g IVOR_table                 flash  .isrVectorTable .isrTrapTable    src\intc.o
+0x0000239e 0x000023ed   80 g Interrupt_SW               flash  .code           .text_vle        src\intc.o
+0x00001800 0x00001bff 1024 g IsrVectorTable             flash  .isrVectorTable .interrupt_table src\intc.o
+0x000027fc 0x0000290b  272 g ME_Init                    flash  .code           .text_vle        src\me.o
+0x00002620 0x0000267f   96 g ME_ModeTransition          flash  .code           .text_vle        src\me.o
+0x02000000 0x02000000    0 l MSR_Mask                   *ABS*  *ABS*           *ABS*            *ABS*
+0x0000290c 0x00002969   94 g PIT_ISR                    flash  .code           .text_vle        src\pit.o
+0x0000296a 0x000029bb   82 g PIT_Init                   flash  .code           .text_vle        src\pit.o
+0x40000800 0x40000803    4 l Pit0Ctr.8915               ram    .bss            .bss             src\pit.o
+0x00002404 0x00002419   22 g SwIrq4Handler              flash  .code           .text_vle        src\intc.o
+0x00001800 0x00001800    0 g __ISR_BASE_                flash  .isrVectorTable .isrVectorTable  LeoMini_LED.elf
+0x00001000 0x00001000    0 g __IVPR_BASE_               flash  .isrVectorTable .isrVectorTable  LeoMini_LED.elf
+0x40000804 0x40000804    0 g __bss_end__                ram    .bss            .bss             LeoMini_LED.elf
+0x40000800 0x40000800    0 g __bss_start__              ram    .bss            .bss             LeoMini_LED.elf
+0x40000800 0x40000800    0 g __data_end__               ram    .bss            .bss             LeoMini_LED.elf
+0x40000800 0x40000800    0 g __data_start__             ram    .bss            .bss             LeoMini_LED.elf
+0x00002394 0x00002394    0 g __early_init               flash  .code           .crt0            src\crt0.o
+0x00100000 0x00100000    0 g __flash_end__              *ABS*  *ABS*           *ABS*            *ABS*
+0x000ffff8 0x000ffff8    0 g __flash_size__             *ABS*  *ABS*           *ABS*            *ABS*
+0x00000008 0x00000008    0 g __flash_start__            *ABS*  *ABS*           *ABS*            *ABS*
+0x40000804 0x40000804    0 g __heap_base__              ram    .bss            .bss             LeoMini_LED.elf
+0x40020000 0x40020000    0 g __heap_end__               *ABS*  *ABS*           *ABS*            *ABS*
+0x40000000 0x40000000    0 g __irq_stack_base__         ram    .stacks         .stacks          LeoMini_LED.elf
+0x40000000 0x40000000    0 g __irq_stack_end__          ram    .stacks         .stacks          LeoMini_LED.elf
+0x00000000 0x00000000    0 g __irq_stack_size__         *ABS*  *ABS*           *ABS*            *ABS*
+0x00002396 0x00002396    0 g __late_init                flash  .code           .crt0            src\crt0.o
+0x40000000 0x40000000    0 g __main_thread_stack_base__ ram    .stacks         .stacks          LeoMini_LED.elf
+0x40000800 0x40000800    0 g __main_thread_stack_end__  ram    .stacks         .stacks          LeoMini_LED.elf
+0x40000000 0x40000000    0 g __process_stack_base__     ram    .stacks         .stacks          LeoMini_LED.elf
+0x40000800 0x40000800    0 g __process_stack_end__      ram    .stacks         .stacks          LeoMini_LED.elf
+0x00000800 0x00000800    0 g __process_stack_size__     *ABS*  *ABS*           *ABS*            *ABS*
+0x40020000 0x40020000    0 g __ram_end__                *ABS*  *ABS*           *ABS*            *ABS*
+0x00020000 0x00020000    0 g __ram_size__               *ABS*  *ABS*           *ABS*            *ABS*
+0x40000000 0x40000000    0 g __ram_start__              *ABS*  *ABS*           *ABS*            *ABS*
+0x000029c0 0x000029c0    0 g __romdata_start__          flash  .code           .code            LeoMini_LED.elf
+0x0000a9c0 0x0000a9c0    0 g __sdata2_start__           flash  .code           .code            LeoMini_LED.elf
+0x40008800 0x40008800    0 g __sdata_start__            ram    .bss            .bss             LeoMini_LED.elf
+0x00002320 0x00002320    0 g _boot_address              flash  .code           .crt0            src\crt0.o
+0x00001c12 0x00001c12    0 l _coreinit                  flash  .code           .crt0            src\crt0.o
+0x0000228c 0x0000228c    0 l _ivinit                    flash  .code           .crt0            src\crt0.o
+0x00002390 0x00002390    0 g _main_exit_handler         flash  .code           .crt0            src\crt0.o
+0x00001c0a 0x00001c0a    0 l _ramcode                   flash  .code           .crt0            src\crt0.o
+0x00001c00 0x00001c00    0 g _reset_address             flash  .code           .crt0            src\crt0.o
+0x00001c00 0x00001c00    0 g _reset_address:            flash  .code           .code            LeoMini_LED.elf
+0x00002434 0x0000243d   10 g dummy                      flash  .code           .text_vle        src\intc.o
+0x0000241a 0x00002433   26 g enableIrq                  flash  .code           .text_vle        src\intc.o
+0x000023c6 0x000023c6    0 l epilog                     flash  .code           .text_vle        src\intc.o
+0x000021d2 0x000021d2    0 l fccu_analyze               flash  .code           .crt0            src\crt0.o
+0x000021d4 0x000021d4    0 l fccu_clear                 flash  .code           .crt0            src\crt0.o
+0x0000223a 0x0000223a    0 l fccu_end                   flash  .code           .crt0            src\crt0.o
+0x0000222a 0x0000222a    0 l fccu_no_fault              flash  .code           .crt0            src\crt0.o
+0x000021d0 0x000021d0    0 l fccu_stcu_error            flash  .code           .crt0            src\crt0.o
+0x000023ee 0x00002403   22 g initSwIrq4                 flash  .code           .text_vle        src\intc.o
+0x00002576 0x0000261f  170 g main                       flash  .code           .text_vle        src\main.o
+0x0000239e 0x0000239e    0 l prolog                     flash  .code           .text_vle        src\intc.o
+0x0000225a 0x0000225a    0 l rgm_clear                  flash  .code           .crt0            src\crt0.o
+0x00002258 0x00002258    0 l rgm_des_handler            flash  .code           .crt0            src\crt0.o
+0x00002266 0x00002266    0 l rgm_end                    flash  .code           .crt0            src\crt0.o
+0x0000225a 0x0000225a    0 l rgm_fes_handler            flash  .code           .crt0            src\crt0.o
+0x0000239c 0x0000239d    2 g unhandled_ISR              flash  .code           .text_vle        src\intc.o
+0x00002398 0x0000239b    4 g unhandled_IVOR             flash  .code           .text_vle        src\intc.o
+
+
+----- END EXTENDED MAP LISTING -----
+
+
+Memory Configuration
+
+Name             Origin             Length             Used               Free               Attributes
+flash_rchw       0x00000000         0x00000008         0x00000008         0x00000000
+interrupts_rom   0x00001000         0x00002000         0x00000000         0x00002000
+flash            0x00000008         0x000ffff8         0x000029b8         0x000fd640
+ram              0x40000000         0x00020000         0x00000804         0x0001f7fc
+*default*        0x00000000         0xffffffff         0x00000094         0xffffff6b
+
+List of aliases
+
+interrupts_rom  : INTR
+
+Linker script and memory map
+
+LOAD c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrti.o
+LOAD c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+LOAD src\crt0.o
+LOAD src\flexcan.o
+LOAD src\intc.o
+LOAD src\main.o
+LOAD src\me.o
+LOAD src\pit.o
+LOAD c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4\libgcc.a
+LOAD c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/../../../../ppc-ht-eabi/lib\libdnk_c.a
+LOAD c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/../../../../ppc-ht-eabi/lib\libos.a
+LOAD c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/../../../../ppc-ht-eabi/lib\libdnk_c.a
+LOAD c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4\libgcc.a
+LOAD c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+LOAD c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrtn.o
+                0x00000000                __irq_stack_size__ = 0x0
+                0x00000800                __process_stack_size__ = 0x800
+                0x000ffff8                __flash_size__ = 0xffff8
+                0x00000008                __flash_start__ = 0x8
+                0x00100000                __flash_end__ = 0x100000
+                0x00020000                __ram_size__ = 0x20000
+                0x40000000                __ram_start__ = 0x40000000
+                0x40020000                __ram_end__ = 0x40020000
+
+.boot           memory region -> flash_rchw
+                0x00000000        0x8
+ *(.boot)
+ .boot          0x00000000        0x8 src\crt0.o
+
+.isrVectorTable memory region -> flash
+                0x00001000      0xc00
+                0x00001000                __IVPR_BASE_ = .
+ *(.isrTrapTable)
+ .isrTrapTable  0x00001000       0xf6 src\intc.o
+                0x00001000                IVOR_table
+                0x00001800                . = ALIGN (0x800)
+ *fill*         0x000010f6      0x70a 00
+                0x00001800                __ISR_BASE_ = .
+ *(.interrupt_table)
+ .interrupt_table
+                0x00001800      0x400 src\intc.o
+                0x00001800                IsrVectorTable
+
+.code           memory region -> flash
+                0x00001c00      0xdc0
+                0x00001c00                _reset_address: = .
+ *(.crt0)
+ .crt0          0x00001c00      0x798 src\crt0.o
+                0x00001c00                _reset_address
+                0x00002320                _boot_address
+                0x00002390                _main_exit_handler
+                0x00002394                __early_init
+                0x00002396                __late_init
+ *(.text_vle)
+ .text_vle      0x00002398      0x100 src\intc.o
+                0x00002398                unhandled_IVOR
+                0x0000239c                unhandled_ISR
+                0x0000239e                Interrupt_SW
+                0x000023ee                initSwIrq4
+                0x00002404                SwIrq4Handler
+                0x0000241a                enableIrq
+                0x00002434                dummy
+                0x0000243e                INTC_Init
+ .text_vle      0x00002498      0x188 src\main.o
+                0x00002498                AIPS_Init
+                0x00002576                main
+ .text_vle      0x00002620      0x2ec src\me.o
+                0x00002620                ME_ModeTransition
+                0x00002680                Clock_Init
+                0x000027fc                ME_Init
+ .text_vle      0x0000290c       0xb0 src\pit.o
+                0x0000290c                PIT_ISR
+                0x0000296a                PIT_Init
+ *(.text_vle.memcpy)
+ *(.text_vle.*)
+                0x000029c0                . = ALIGN (0x10)
+ *fill*         0x000029bc        0x4 00
+
+.text_vle
+ *(.text_vle)
+ *(.text_vle.*)
+ *(.gnu.linkonce.t_vle.*)
+
+.text
+ *(.text)
+ *(.text.*)
+ *(.gnu.linkonce.t.*)
+
+.glink          memory region -> *default*
+                0x00000000        0x0
+ .glink         0x00000000        0x0 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+
+.rela.dyn       memory region -> *default*
+                0x00000000        0x0
+ .rela.iplt     0x00000000        0x0 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+
+.rodata
+ *(.glue_7t)
+ *(.glue_7)
+ *(.gcc*)
+ *(.rodata)
+ *(.rodata.*)
+ *(.rodata1)
+
+.sdata2         memory region -> flash
+                0x000029c0        0x0
+                0x0000a9c0                __sdata2_start__ = (. + 0x8000)
+ *(.sdata2)
+ *(.sdata2.*)
+ *(.gnu.linkonce.s2.*)
+ *(.sbss2)
+ *(.sbss2.*)
+ *(.gnu.linkonce.sb2.*)
+
+.romdata        memory region -> flash
+                0x000029c0        0x0
+                0x000029c0                __romdata_start__ = .
+
+.stacks         memory region -> ram
+                0x40000000      0x800
+                0x40000000                . = ALIGN (0x8)
+                0x40000000                __irq_stack_base__ = .
+                0x40000000                . = (. + __irq_stack_size__)
+                0x40000000                . = ALIGN (0x8)
+                0x40000000                __irq_stack_end__ = .
+                0x40000000                __process_stack_base__ = .
+                0x40000000                __main_thread_stack_base__ = .
+                0x40000800                . = (. + __process_stack_size__)
+ *fill*         0x40000000      0x800 00
+                0x40000800                . = ALIGN (0x8)
+                0x40000800                __process_stack_end__ = .
+                0x40000800                __main_thread_stack_end__ = .
+
+.data           memory region -> ram
+                0x40000800        0x0 load address 0x000029c0
+                0x40000800                . = ALIGN (0x4)
+                0x40000800                __data_start__ = .
+ *(.data)
+ *(.data.*)
+ *(.gnu.linkonce.d.*)
+                0x40008800                __sdata_start__ = (. + 0x8000)
+ *(.sdata)
+ *(.sdata.*)
+ *(.gnu.linkonce.s.*)
+                0x40000800                __data_end__ = .
+
+.sbss           memory region -> ram
+                0x40000800        0x0
+                0x40000800                __bss_start__ = .
+ *(.sbss)
+ *(.sbss.*)
+ *(.gnu.linkonce.sb.*)
+ *(.scommon)
+
+.bss            memory region -> ram
+                0x40000800        0x4
+ *(.bss)
+ .bss           0x40000800        0x4 src\pit.o
+ *(.bss.*)
+ *(.gnu.linkonce.b.*)
+ *(COMMON)
+                0x40000804                __bss_end__ = .
+                0x40000804                __heap_base__ = __bss_end__
+                0x40020000                __heap_end__ = __ram_end__
+OUTPUT(LeoMini_LED.elf elf32-powerpc)
+
+.iplt           memory region -> *default*
+                0x40000810        0x0
+ .iplt          0x00000000        0x0 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+
+.comment        memory region -> *default*
+                0x00000000       0x5d
+ .comment       0x00000000        0xd c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrti.o
+                                  0xe (size before relaxing)
+ .comment       0x0000000d       0x43 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+                                 0x44 (size before relaxing)
+ .comment       0x00000000       0x44 src\flexcan.o
+ .comment       0x00000000       0x44 src\intc.o
+ .comment       0x00000000       0x44 src\main.o
+ .comment       0x00000000       0x44 src\me.o
+ .comment       0x00000000       0x44 src\pit.o
+ .comment       0x00000000       0x44 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+ .comment       0x00000050        0xd c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrtn.o
+                                  0xe (size before relaxing)
+
+.version_info   memory region -> *default*
+                0x00000000     0x74cf
+ .version_info  0x00000000     0x1ff7 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+ .version_info  0x00001ff7      0xab2 src\flexcan.o
+ .version_info  0x00002aa9      0xa97 src\intc.o
+ .version_info  0x00003540      0xa97 src\main.o
+ .version_info  0x00003fd7      0xa85 src\me.o
+ .version_info  0x00004a5c      0xa8e src\pit.o
+ .version_info  0x000054ea     0x1fe5 c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+
+.PPC.EMB.apuinfo memory region -> *default*
+                0x00000000       0x20
+ .PPC.EMB.apuinfo
+                0x00000000       0x1c src\crt0.o
+ .PPC.EMB.apuinfo
+                0x0000001c       0x18 src\flexcan.o
+ .PPC.EMB.apuinfo
+                0x00000034       0x18 src\intc.o
+ .PPC.EMB.apuinfo
+                0x0000004c       0x18 src\main.o
+ .PPC.EMB.apuinfo
+                0x00000064       0x18 src\me.o
+ .PPC.EMB.apuinfo
+                0x0000007c       0x18 src\pit.o
+
+.debug_line     memory region -> *default*
+                0x00000000      0x8c5
+ .debug_line    0x00000000      0x258 src\crt0.o
+ .debug_line    0x00000258      0x20a src\flexcan.o
+ .debug_line    0x00000462      0x126 src\intc.o
+ .debug_line    0x00000588      0x19c src\main.o
+ .debug_line    0x00000724       0xe5 src\me.o
+ .debug_line    0x00000809       0xbc src\pit.o
+
+.debug_info     memory region -> *default*
+                0x00000000     0xb2f3
+ .debug_info    0x00000000       0x58 src\crt0.o
+ .debug_info    0x00000058     0x2844 src\flexcan.o
+ .debug_info    0x0000289c      0x515 src\intc.o
+ .debug_info    0x00002db1     0x3f02 src\main.o
+ .debug_info    0x00006cb3     0x3023 src\me.o
+ .debug_info    0x00009cd6     0x161d src\pit.o
+
+.debug_abbrev   memory region -> *default*
+                0x00000000      0x709
+ .debug_abbrev  0x00000000       0x14 src\crt0.o
+ .debug_abbrev  0x00000014      0x1d0 src\flexcan.o
+ .debug_abbrev  0x000001e4      0x165 src\intc.o
+ .debug_abbrev  0x00000349      0x144 src\main.o
+ .debug_abbrev  0x0000048d      0x13d src\me.o
+ .debug_abbrev  0x000005ca      0x13f src\pit.o
+
+.debug_aranges  memory region -> *default*
+                0x00000000       0xc8
+ .debug_aranges
+                0x00000000       0x20 src\crt0.o
+ .debug_aranges
+                0x00000020       0x20 src\flexcan.o
+ .debug_aranges
+                0x00000040       0x28 src\intc.o
+ .debug_aranges
+                0x00000068       0x20 src\main.o
+ .debug_aranges
+                0x00000088       0x20 src\me.o
+ .debug_aranges
+                0x000000a8       0x20 src\pit.o
+
+.debug_loc      memory region -> *default*
+                0x00000000      0x498
+ .debug_loc     0x00000000      0x198 src\flexcan.o
+ .debug_loc     0x00000198      0x13c src\intc.o
+ .debug_loc     0x000002d4       0x70 src\main.o
+ .debug_loc     0x00000344       0xcc src\me.o
+ .debug_loc     0x00000410       0x88 src\pit.o
+
+.debug_macinfo  memory region -> *default*
+                0x00000000    0x1c01c
+ .debug_macinfo
+                0x00000000     0x514d src\flexcan.o
+ .debug_macinfo
+                0x0000514d     0x53bb src\intc.o
+ .debug_macinfo
+                0x0000a508     0x783e src\main.o
+ .debug_macinfo
+                0x00011d46     0x52ef src\me.o
+ .debug_macinfo
+                0x00017035     0x4fe7 src\pit.o
+
+.debug_str      memory region -> *default*
+                0x00000000     0x2e83
+ .debug_str     0x00000000      0xe9f src\flexcan.o
+                                0xed4 (size before relaxing)
+ .debug_str     0x00000e9f      0x1fb src\intc.o
+                                0x293 (size before relaxing)
+ .debug_str     0x0000109a     0x1452 src\main.o
+                               0x2064 (size before relaxing)
+ .debug_str     0x000024ec      0x883 src\me.o
+                                0xf89 (size before relaxing)
+ .debug_str     0x00002d6f      0x114 src\pit.o
+                                0x817 (size before relaxing)
+
+.debug_frame    memory region -> *default*
+                0x00000000      0x2e8
+ .debug_frame   0x00000000       0xe8 src\flexcan.o
+ .debug_frame   0x000000e8       0xe8 src\intc.o
+ .debug_frame   0x000001d0       0x50 src\main.o
+ .debug_frame   0x00000220       0x78 src\me.o
+ .debug_frame   0x00000298       0x50 src\pit.o
+
+.debug_ranges   memory region -> *default*
+                0x00000000       0x18
+ .debug_ranges  0x00000000       0x18 src\intc.o
+
+Cross Reference Table
+
+Symbol                                            File
+AIPS_Init                                         src\main.o
+CAN_Init                                          src\flexcan.o
+CAN_SetupPads                                     src\flexcan.o
+CAN_Tx                                            src\flexcan.o
+CanRxStart                                        src\flexcan.o
+Clock_Init                                        src\me.o
+INTC_Init                                         src\intc.o
+IVOR_table                                        src\intc.o
+Interrupt_SW                                      src\intc.o
+                                                  src\crt0.o
+IsrVectorTable                                    src\intc.o
+ME_Init                                           src\me.o
+                                                  src\main.o
+ME_ModeTransition                                 src\me.o
+PIT_ISR                                           src\pit.o
+                                                  src\intc.o
+PIT_Init                                          src\pit.o
+                                                  src\main.o
+SetBaudRate                                       src\flexcan.o
+SetIdMaskFiltering                                src\flexcan.o
+SwIrq4Handler                                     src\intc.o
+_Jv_RegisterClasses                               c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+__DTOR_END__                                      c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtend.o
+                                                  c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+__IVPR_BASE_                                      src\crt0.o
+__bss_end__                                       src\crt0.o
+__bss_start__                                     src\crt0.o
+__data_end__                                      src\crt0.o
+__data_start__                                    src\crt0.o
+__dso_handle                                      c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/crtbegin.o
+__early_init                                      src\crt0.o
+__fini                                            c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrti.o
+__init                                            c:/hightec/toolchains/powerpc/v4.6.6.0/bin/../lib/gcc/ppc-ht-eabi/4.6.4/ecrti.o
+__late_init                                       src\crt0.o
+__process_stack_end__                             src\crt0.o
+__ram_end__                                       src\crt0.o
+__ram_start__                                     src\crt0.o
+__romdata_start__                                 src\crt0.o
+__sdata2_start__                                  src\crt0.o
+__sdata_start__                                   src\crt0.o
+_boot_address                                     src\crt0.o
+_main_exit_handler                                src\crt0.o
+_reset_address                                    src\crt0.o
+dummy                                             src\intc.o
+enableIrq                                         src\intc.o
+initSwIrq4                                        src\intc.o
+main                                              src\main.o
+                                                  src\crt0.o
+unhandled_ISR                                     src\intc.o
+unhandled_IVOR                                    src\intc.o
+                                                  src\crt0.o

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.rt.hightec.buildsystem.powerpc.new.configuration.excutable.82248907">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.rt.hightec.buildsystem.powerpc.new.configuration.excutable.82248907" moduleId="org.eclipse.cdt.core.settings" name="BSP">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="LeoMini_LED" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" description="" id="com.rt.hightec.buildsystem.powerpc.new.configuration.excutable.82248907" name="BSP" parent="com.rt.hightec.buildsystem.powerpc.new.configuration.excutable">
+					<folderInfo id="com.rt.hightec.buildsystem.powerpc.new.configuration.excutable.82248907." name="/" resourcePath="">
+						<toolChain id="com.rt.hightec.buildsystem.powerpc.new.toolchain.executable.2078195083" name="PowerPC Toolchain" superClass="com.rt.hightec.buildsystem.powerpc.new.toolchain.executable">
+							<option id="com.rt.hightec.buildsystem.powerpc.new.msoft.1885819166" name="Do not use hardware floating point (-msoft-float)" superClass="com.rt.hightec.buildsystem.powerpc.new.msoft" value="true" valueType="boolean"/>
+							<option id="com.rt.hightec.buildsystem.powerpc.new.mspe.381349835" name="Generate SPE SIMD instructions on E500 (-mspe)" superClass="com.rt.hightec.buildsystem.powerpc.new.mspe" value="false" valueType="boolean"/>
+							<option id="com.rt.hightec.buildsystem.powerpc.new.mcpu.398285575" name="CPU type (-mcpu)" superClass="com.rt.hightec.buildsystem.powerpc.new.mcpu" value="-mcpu=z420n3" valueType="enumerated"/>
+							<targetPlatform archList="PowerPC" binaryParser="org.eclipse.cdt.core.ELF" id="com.rt.hightec.buildsystem.powerpc.new.excutable.targetplatform.1752635987" isAbstract="false" name="STM-SPC56ELxx" superClass="com.rt.hightec.buildsystem.powerpc.new.excutable.targetplatform"/>
+							<builder buildPath="${workspace_loc:/LeoMini_LED/BSP}" id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.builder.1653686554" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.builder"/>
+							<tool id="com.rt.hightec.buildsystem.powerpc.new.assembler.89152124" name="PowerPC Assembler" superClass="com.rt.hightec.buildsystem.powerpc.new.assembler">
+								<option id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.assembler.symbols.defined.1907035423" name="Defined symbols (-D)" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.assembler.symbols.defined" valueType="definedSymbols"/>
+								<option id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.assembler.general.includepath.1582983402" name="Include Paths" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.assembler.general.includepath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include}&quot;"/>
+								</option>
+								<inputType id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.assembler.input.1721649783" name="Assembler Input NO GUI" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.assembler.input"/>
+							</tool>
+							<tool id="com.rt.hightec.buildsystem.powerpc.new.compiler.c.670498750" name="PowerPC C Compiler" superClass="com.rt.hightec.buildsystem.powerpc.new.compiler.c">
+								<option id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.symbols.defined.641072505" name="Defined symbols (-D)" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.symbols.defined" valueType="definedSymbols"/>
+								<option id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.miscellaneous.options.1656567485" name="Other options" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.miscellaneous.options" valueType="stringList"/>
+								<option id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.general.paths.1147263372" name="Include Paths" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.general.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include}&quot;"/>
+								</option>
+								<option id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.optimization.optimization.862941620" name="Optimization Level" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.optimization.optimization" value="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.code.optimization.none" valueType="enumerated"/>
+								<inputType id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.c.inputType.1184759514" name="Compiler Input (C)" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.c.inputType"/>
+							</tool>
+							<tool id="com.rt.hightec.buildsystem.powerpc.new.compiler.cpp.1372800825" name="PowerPC C++ Compiler" superClass="com.rt.hightec.buildsystem.powerpc.new.compiler.cpp">
+								<option id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.general.paths.725485674" name="Include Paths" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.compiler.general.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;../h&quot;"/>
+								</option>
+							</tool>
+							<tool id="com.rt.hightec.buildsystem.powerpc.new.linker.c.1996919084" name="PowerPC C Linker" superClass="com.rt.hightec.buildsystem.powerpc.new.linker.c">
+								<option id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.linker.general.description.file.17090228" name="Browse Linker Description File (-T)" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.linker.general.description.file" value="&quot;D:\Projects\Leopard\LeoMini_LED\ld\SPC56EL70.ld&quot;" valueType="string"/>
+								<option id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.linker.lib.Includepath.1670915100" name="Library search path (-L)" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.linker.lib.Includepath" valueType="libPaths">
+									<listOptionValue builtIn="false" value="../ld"/>
+								</option>
+								<option id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.linker.Optimization.rmUnrefSec.293959813" name="Remove unreferenced sections (-Wl,--gc-sections)" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.linker.Optimization.rmUnrefSec" value="true" valueType="boolean"/>
+								<option id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.linker.memholes.835998160" name="Assign input sections to the next output section, if the memory region is full (-Wl,--mem-holes)" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.linker.memholes" value="false" valueType="boolean"/>
+								<inputType id="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.linker.input.1907822353" name="Abstract Linker Input NO GUI" superClass="com.rt.hightec.framework.buildsystem.abstract.hightec.tool.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+									<additionalInput kind="additionalinputdependency" paths="$(ASM)"/>
+								</inputType>
+							</tool>
+							<tool id="com.rt.hightec.buildsystem.powerpc.new.linker.cpp.1988633868" name="PowerPC C++ Linker" superClass="com.rt.hightec.buildsystem.powerpc.new.linker.cpp"/>
+							<tool id="com.rt.hightec.buildsystem.powerpc.new.archiver.1482089666" name="PowerPC Archiver" superClass="com.rt.hightec.buildsystem.powerpc.new.archiver"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="include"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="LeoMini_LED.com.rt.hightec.buildsystem.powerpc.new.projectType.395636627" name="PowerPC Project" projectType="com.rt.hightec.buildsystem.powerpc.new.projectType"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+		<buildTargets>
+			<target name="clean" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>clean</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>true</runAllBuilders>
+			</target>
+			<target name="all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>all</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>true</runAllBuilders>
+			</target>
+			<target name="rebuild" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>rebuild</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>true</runAllBuilders>
+			</target>
+		</buildTargets>
+	</storageModule>
+	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+</cproject>
