@@ -1,37 +1,38 @@
-/*
-    SPC5 HAL - Copyright (C) 2013 STMicroelectronics
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-*/
-
-/**
- * @file    boot.s
- * @brief   SPC56ELxx boot-related code.
- *
- * @addtogroup PPC_BOOT
- * @{
- */
+///*
+//    SPC5 HAL - Copyright (C) 2013 STMicroelectronics
+//
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+//
+//        http://www.apache.org/licenses/LICENSE-2.0
+//
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
+//*/
+//
+///**
+// * @file    boot.s
+// * @brief   SPC56ELxx boot-related code.
+// *
+// * @addtogroup PPC_BOOT
+// * @{
+// */
 
 #include "boot.h"
         .globl      _boot_address
         .type       _boot_address, @function
 
-        /* BAM record.*/
-        .section    .boot, "ax"
-        .long       0x015A0000
-		.long       _reset_address
+       // /* BAM record.*/
+        .section    .boot, "avx"
+        .long       0x015A0000 //VLE enabled, Watchdog disabled, PS=32bit
+	.long	    _reset_address
+	 b	    _reset_address
 
-        .section    .crt0, "ax"
+        .section    .crt0, "avx"
 
         .align      2
         .globl      _reset_address
@@ -39,26 +40,26 @@
         .globl		Interrupt_SW
         .type       _reset_address, @function
 
-/**************************************************************************************************/
+///**************************************************************************************************/
 _reset_address:
 	bl          _coreinit
 	bl          _ivinit
 	b           _boot_address
 
-/**************************************************************************************************/
+///**************************************************************************************************/
 _ramcode:
         tlbwe
         isync
         blr
 
 
-/**************************************************************************************************/
+///**************************************************************************************************/
 _coreinit:
 	//---- Initialise the MSR -----
 	//   e_lis	r3, STARTUP_MSR@ha;
 	//   e_or2i	r3, STARTUP_MSR@l;
 	// mtmsr	r3
-	// e_b _start
+	// e_b _startiiii
 	//---------  Initialise Registers ---------------------
 
 	//Initialise all core GPRs
@@ -162,11 +163,11 @@ _coreinit:
 	mtspr 562,r31         //DBCNT
 
 	//13. 32-bit MAS0-4 (spr 624-628), MAS6 (spr 630)
-	/*MAS0-3 are initialized below when doing MMU setup.
-	 need valid value to write to MAS4 and MAS6 ????
-	You also need to look at the spec.
-	executing these instructions crashes the part when doing
-	msync below. August 11, 2010 */
+//	/*MAS0-3 are initialized below when doing MMU setup.
+//	 need valid value to write to MAS4 and MAS6 ????
+//	You also need to look at the spec.
+//	executing these instructions crashes the part when doing
+//	msync below. August 11, 2010 */
 //	mtMAS4 r31            //MAS4
 //	mtMAS6 r31            //MAS6
 
@@ -291,156 +292,156 @@ _coreinit:
 	// is initialized from the MCAL watchdog driver. This can be      *
 	// done for example by increasing the watchdog service time.      *
 	//*****************************************************************
-/*	e_lis     r6, 0xfff4
-	e_sub16i  r6, r6, 0x7ff0
-	e_li      r7, 0xc520 ;   //unlock peripheral I
-	se_stw    r7, 0(r6)
-	e_li      r7, 0xd928
-	se_stw    r7, 0(r6) ;    //unlock peripheral II
-	// disable SWT
-	e_lis     r7, 0xfff4
-	e_sub16i  r7, r7, 0x8000
-	se_lwz    r6, 0(r7)
-	se_bclri  r6, 31
-	se_stw    r6, 0(r7)
-*/
-
-	/* Invalidating all TLBs except TLB0.      */
+/////*	e_lis     r6, 0xfff4
+////	e_sub16i  r6, r6, 0x7ff0
+////	e_li      r7, 0xc520 ;   //unlock peripheral I
+////	se_stw    r7, 0(r6)
+////	e_li      r7, 0xd928
+////	se_stw    r7, 0(r6) ;    //unlock peripheral II
+////	// disable SWT
+////	e_lis     r7, 0xfff4
+////	e_sub16i  r7, r7, 0x8000
+////	se_lwz    r6, 0(r7)
+////	se_bclri  r6, 31
+////	se_stw    r6, 0(r7)
+////*/
+////
+////	/* Invalidating all TLBs except TLB0.      */
         lis         %r3, 0
-        mtspr       625, %r3        /* MAS1 */
-        mtspr       626, %r3        /* MAS2 */
-        mtspr       627, %r3        /* MAS3 */
+        mtspr       625, %r3       // /* MAS1 */
+        mtspr       626, %r3       // /* MAS2 */
+        mtspr       627, %r3      //  /* MAS3 */
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(1))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3      //  /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(2))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3      //  /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(3))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(4))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(5))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3      //  /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(6))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(7))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(8))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3      //  /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(9))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(10))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(11))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3        ///* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(12))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(13))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(14))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         tlbwe
         lis         %r3, (MAS0_TBLMAS_TBL | MAS0_ESEL(15))@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         tlbwe
 
-        /*
-         * TLB1 allocated to internal RAM.
-         */
+//        /*
+//         * TLB1 allocated to internal RAM.
+//         */
         lis         %r3, TLB1_MAS0@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         lis         %r3, TLB1_MAS1@h
         ori         %r3, %r3, TLB1_MAS1@l
-        mtspr       625, %r3        /* MAS1 */
+        mtspr       625, %r3       // /* MAS1 */
         lis         %r3, TLB1_MAS2@h
         ori         %r3, %r3, TLB1_MAS2@l
-        mtspr       626, %r3        /* MAS2 */
+        mtspr       626, %r3       // /* MAS2 */
         lis         %r3, TLB1_MAS3@h
         ori         %r3, %r3, TLB1_MAS3@l
-        mtspr       627, %r3        /* MAS3 */
+        mtspr       627, %r3      //  /* MAS3 */
         tlbwe
 
-        /*
-         * TLB2 allocated to internal Peripherals Bridge A.
-         */
+//        /*
+//         * TLB2 allocated to internal Peripherals Bridge A.
+//         */
         lis         %r3, TLB2_MAS0@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         lis         %r3, TLB2_MAS1@h
         ori         %r3, %r3, TLB2_MAS1@l
-        mtspr       625, %r3        /* MAS1 */
+        mtspr       625, %r3       // /* MAS1 */
         lis         %r3, TLB2_MAS2@h
         ori         %r3, %r3, TLB2_MAS2@l
-        mtspr       626, %r3        /* MAS2 */
+        mtspr       626, %r3      //  /* MAS2 */
         lis         %r3, TLB2_MAS3@h
         ori         %r3, %r3, TLB2_MAS3@l
-        mtspr       627, %r3        /* MAS3 */
+        mtspr       627, %r3      //  /* MAS3 */
         tlbwe
 
-        /*
-         * TLB3 allocated to internal Peripherals Bridge B.
-         */
+//        /*
+//         * TLB3 allocated to internal Peripherals Bridge B.
+//         */
         lis         %r3, TLB3_MAS0@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3    //    /* MAS0 */
         lis         %r3, TLB3_MAS1@h
         ori         %r3, %r3, TLB3_MAS1@l
-        mtspr       625, %r3        /* MAS1 */
+        mtspr       625, %r3    //    /* MAS1 */
         lis         %r3, TLB3_MAS2@h
         ori         %r3, %r3, TLB3_MAS2@l
-        mtspr       626, %r3        /* MAS2 */
+        mtspr       626, %r3     //   /* MAS2 */
         lis         %r3, TLB3_MAS3@h
         ori         %r3, %r3, TLB3_MAS3@l
-        mtspr       627, %r3        /* MAS3 */
+        mtspr       627, %r3     //   /* MAS3 */
         tlbwe
-
-        /*
-         * TLB4 allocated to on-platform peripherals.
-         */
+//
+//        /*
+//         * TLB4 allocated to on-platform peripherals.
+//         */
         lis         %r3, TLB4_MAS0@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3       // /* MAS0 */
         lis         %r3, TLB4_MAS1@h
         ori         %r3, %r3, TLB4_MAS1@l
-        mtspr       625, %r3        /* MAS1 */
+        mtspr       625, %r3       // /* MAS1 */
         lis         %r3, TLB4_MAS2@h
         ori         %r3, %r3, TLB4_MAS2@l
-        mtspr       626, %r3        /* MAS2 */
+        mtspr       626, %r3       // /* MAS2 */
         lis         %r3, TLB4_MAS3@h
         ori         %r3, %r3, TLB4_MAS3@l
-        mtspr       627, %r3        /* MAS3 */
+        mtspr       627, %r3       // /* MAS3 */
         tlbwe
 
-        /*
-         * TLB5 allocated to on-platform peripherals.
-         */
+//        /*
+//         * TLB5 allocated to on-platform peripherals.
+//         */
         lis         %r3, TLB5_MAS0@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3     //   /* MAS0 */
         lis         %r3, TLB5_MAS1@h
         ori         %r3, %r3, TLB5_MAS1@l
-        mtspr       625, %r3        /* MAS1 */
+        mtspr       625, %r3      //  /* MAS1 */
         lis         %r3, TLB5_MAS2@h
         ori         %r3, %r3, TLB5_MAS2@l
-        mtspr       626, %r3        /* MAS2 */
+        mtspr       626, %r3      //  /* MAS2 */
         lis         %r3, TLB5_MAS3@h
         ori         %r3, %r3, TLB5_MAS3@l
-        mtspr       627, %r3        /* MAS3 */
+        mtspr       627, %r3      //  /* MAS3 */
         tlbwe
-
-        /*
-         * RAM clearing, this device requires a write to all RAM location in
-         * order to initialize the ECC detection hardware, this is going to
-         * slow down the startup but there is no way around.
-         */
+//
+//        /*
+//         * RAM clearing, this device requires a write to all RAM location in
+//         * order to initialize the ECC detection hardware, this is going to
+//         * slow down the startup but there is no way around.
+//         */
         xor         %r0, %r0, %r0
         xor         %r1, %r1, %r1
         xor         %r2, %r2, %r2
@@ -486,21 +487,21 @@ _coreinit:
 .cleareccend:
 
 
-        /*
-         * Special function registers clearing, required in order to avoid
-         * possible problems with lockstep mode.
-         */
+//        /*
+//         * Special function registers clearing, required in order to avoid
+//         * possible problems with lockstep mode.
+//         */
         mtcrf       0xFF, %r31
-        mtspr       9, %r31         /* CTR     */
-        mtspr       22, %r31        /* DEC     */
-        mtspr       26, %r31        /* SRR0-1  */
+        mtspr       9, %r31       //  /* CTR     */
+        mtspr       22, %r31       // /* DEC     */
+        mtspr       26, %r31      //  /* SRR0-1  */
         mtspr       27, %r31
-        mtspr       54, %r31        /* DECAR   */
-        mtspr       58, %r31        /* CSRR0-1 */
+        mtspr       54, %r31       // /* DECAR   */
+        mtspr       58, %r31       // /* CSRR0-1 */
         mtspr       59, %r31
-        mtspr       61, %r31        /* DEAR    */
-        mtspr       256, %r31       /* USPRG0  */
-        mtspr       272, %r31       /* SPRG1-7 */
+        mtspr       61, %r31      //  /* DEAR    */
+        mtspr       256, %r31     //  /* USPRG0  */
+        mtspr       272, %r31     //  /* SPRG1-7 */
         mtspr       273, %r31
         mtspr       274, %r31
         mtspr       275, %r31
@@ -508,34 +509,34 @@ _coreinit:
         mtspr       277, %r31
         mtspr       278, %r31
         mtspr       279, %r31
-        mtspr       285, %r31       /* TBU     */
-        mtspr       284, %r31       /* TBL     */
+        mtspr       285, %r31      // /* TBU     */
+        mtspr       284, %r31      // /* TBL     */
 #if 0
-        mtspr       318, %r31       /* DVC1-2  */
+        mtspr       318, %r31      // /* DVC1-2  */
         mtspr       319, %r31
 #endif
-        mtspr       562, %r31       /* DBCNT */
-        mtspr       570, %r31       /* MCSRR0  */
-        mtspr       571, %r31       /* MCSRR1  */
-        mtspr       604, %r31       /* SPRG8-9 */
+        mtspr       562, %r31     //  /* DBCNT */
+        mtspr       570, %r31     //  /* MCSRR0  */
+        mtspr       571, %r31     //  /* MCSRR1  */
+        mtspr       604, %r31      // /* SPRG8-9 */
         mtspr       605, %r31
 
 
-        /*
-         * *Finally* the TLB0 is re-allocated to flash, note, the final phase
-         * is executed from RAM.
-         */
+//        /*
+//         * *Finally* the TLB0 is re-allocated to flash, note, the final phase
+//         * is executed from RAM.
+//         */
         lis         %r3, TLB0_MAS0@h
-        mtspr       624, %r3        /* MAS0 */
+        mtspr       624, %r3      //  /* MAS0 */
         lis         %r3, TLB0_MAS1@h
         ori         %r3, %r3, TLB0_MAS1@l
-        mtspr       625, %r3        /* MAS1 */
+        mtspr       625, %r3       // /* MAS1 */
         lis         %r3, TLB0_MAS2@h
         ori         %r3, %r3, TLB0_MAS2@l
-        mtspr       626, %r3        /* MAS2 */
+        mtspr       626, %r3      //  /* MAS2 */
         lis         %r3, TLB0_MAS3@h
         ori         %r3, %r3, TLB0_MAS3@l
-        mtspr       627, %r3        /* MAS3 */
+        mtspr       627, %r3      //  /* MAS3 */
         mflr        %r4
         lis         %r6, _ramcode@h
         ori         %r6, %r6, _ramcode@l
@@ -549,17 +550,17 @@ _coreinit:
         stw         %r3, 8(%r7)
         bctrl
         mtlr        %r4
-
-
-    /*****************************************
-    *FCCU - to store status and Fault handling
-    *****************************************/
+//
+//
+//    /*****************************************
+//    *FCCU - to store status and Fault handling
+//    *****************************************/
     // Base address of FCCU module to r7
     e_lis   %r7, FCCU_BASE@h
     e_or2i  %r7, FCCU_BASE@l
 
     // Read Status
-    e_li     %r0, FCCU_OPR_STATUS     //prepare command
+    e_li %r0, FCCU_OPR_STATUS     //prepare command
     stw    %r0, FCCU_REG_CTRL (%r7)    // issue command
     .read_status:
     lwz    %r0, FCCU_REG_CTRL (%r7)    // read FCCU_CTRL register
@@ -668,9 +669,9 @@ _coreinit:
     fccu_end:
 
 
-    /**********************
-     * RGM  to store status
-     *********************/
+//    /**********************
+//     * RGM  to store status
+//     *********************/
 
     // Base address of RGM module to r7
       e_lis   r7, RGM_BASE@h
@@ -702,25 +703,25 @@ _coreinit:
 
     rgm_end:
 
-        /* Branch prediction enabled.  */
+//        /* Branch prediction enabled.  */
         li          %r3, BUCSR_DEFAULT
-        mtspr       1013, %r3       /* BUCSR */
+        mtspr       1013, %r3      // /* BUCSR */
 
-        /* Cache invalidated and then enabled. */
+//        /* Cache invalidated and then enabled. */
         li          %r3, LICSR1_ICINV
-        mtspr       1011, %r3       /* LICSR1 */
-.inv:   mfspr       %r3, 1011       /* LICSR1 */
+        mtspr       1011, %r3     //  /* LICSR1 */
+.inv:   mfspr       %r3, 1011     //  /* LICSR1 */
         andi.       %r3, %r3, LICSR1_ICINV
         bne         .inv
         lis         %r3, LICSR1_DEFAULT@h
         ori         %r3, %r3, LICSR1_DEFAULT@l
-        mtspr       1011, %r3       /* LICSR1 */
+        mtspr       1011, %r3     //  /* LICSR1 */
         blr
-/**************************************************************************************************/
+///**************************************************************************************************/
 _ivinit:				// 32-bit IVPR (spr 63)
 
 	//32-bit IVOR0-15 (spr 400 - 415), IVOR 32-35 (spr 528 - 531)
-	/* MSR initialization.*/
+//	/* MSR initialization.*/
 	lis         %r3, MSR_DEFAULT@h
 	ori         %r3, %r3, MSR_DEFAULT@l
 	mtMSR       %r3
@@ -733,16 +734,16 @@ _ivinit:				// 32-bit IVPR (spr 63)
 	mtspr 256,r31         //USPRG0
 
 
-	/* IVPR initialization.*/
+//	/* IVPR initialization.*/
 	lis         %r3, __IVPR_BASE_@h
 	ori         %r3, %r3, __IVPR_BASE_@l
 	mtIVPR      %r3
 
-	/* IVORs initialization.*/
+//	/* IVORs initialization.*/
 	lis         %r3, unhandled_IVOR@h
 	ori         %r3, %r3, unhandled_IVOR@l
 
-	mtspr       400, %r3        /* IVOR0-15 */
+	mtspr       400, %r3        ///* IVOR0-15 */
 	mtspr       401, %r3
 	mtspr       402, %r3
 	mtspr       403, %r3
@@ -758,40 +759,40 @@ _ivinit:				// 32-bit IVPR (spr 63)
 	mtspr       413, %r3
 	mtspr       414, %r3
 	mtspr       415, %r3
-	mtspr       528, %r3        /* IVOR32-34 */
+	mtspr       528, %r3        ///* IVOR32-34 */
 	mtspr       529, %r3
 	mtspr       530, %r3
 
 
-		/* IVORs initialization.*/
+//		/* IVORs initialization.*/
 	lis         %r3, Interrupt_SW@h
 	ori         %r3, %r3, Interrupt_SW@l
 	mtspr       404, %r3
 
 	blr
-/**************************************************************************************************/
+///**************************************************************************************************/
 _boot_address:
-        /*
-         * Stack setup.
-         */
+//        /*
+//         * Stack setup.
+//         */
         lis         %r1, __process_stack_end__@h
         ori         %r1, %r1, __process_stack_end__@l
         li          %r0, 0
         stwu        %r0, -8(%r1)
-        /*
-         * Small sections registers initialization.
-         */
+//        /*
+//         * Small sections registers initialization.
+//         */
         lis         %r2, __sdata2_start__@h
         ori         %r2, %r2, __sdata2_start__@l
         lis         %r13, __sdata_start__@h
         ori         %r13, %r13, __sdata_start__@l
-        /*
-         * Early initialization.
-         */
+//        /*
+//         * Early initialization.
+//         */
         bl          __early_init
-        /*
-         * BSS clearing.
-         */
+//        /*
+//         * BSS clearing.
+//         */
         lis         %r4, __bss_start__@h
         ori         %r4, %r4, __bss_start__@l
         lis         %r5, __bss_end__@h
@@ -804,9 +805,9 @@ _boot_address:
         addi        %r4, %r4, 4
         b           .bssloop
 .bssend:
-        /*
-         * DATA initialization.
-         */
+//        /*
+//         * DATA initialization.
+//         */
         lis         %r4, __romdata_start__@h
         ori         %r4, %r4, __romdata_start__@l
         lis         %r5, __data_start__@h
@@ -822,41 +823,41 @@ _boot_address:
         addi        %r5, %r5, 4
         b           .dataloop
 .dataend:
-        /*
-         * Late initialization.
-         */
+//        /*
+//         * Late initialization.
+//         */
         bl          __late_init
-        /*
-         * Main program invocation.
-         */
+//        /*
+//         * Main program invocation.
+//         */
         bl          main
         b           _main_exit_handler
 
-        /*
-         * Default main exit code, infinite loop.
-         */
+//        /*
+//         * Default main exit code, infinite loop.
+//         */
         .weak       _main_exit_handler
         .globl      _main_exit_handler
         .type       _main_exit_handler, @function
 _main_exit_handler:
         b           _main_exit_handler
 
-        /*
-         * Default early initialization code, none.
-         */
+//        /*
+//         * Default early initialization code, none.
+//         */
         .weak       __early_init
         .globl      __early_init
         .type       __early_init, @function
 __early_init:
         blr
 
-        /*
-         * Default late initialization code, none.
-         */
+//        /*
+//         * Default late initialization code, none.
+//         */
         .weak       __late_init
         .globl      __late_init
         .type       __late_init, @function
 __late_init:
         blr
 
-/** @} */
+///** @} */
