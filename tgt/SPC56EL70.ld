@@ -22,40 +22,98 @@
 /*
  * SPC56EL60 memory setup in LSM mode.
  */
+CONSTANTS{
 __irq_stack_size__      = 0;
 __process_stack_size__  = 2048;
-
-MEMORY
-{
-    flash_rchw	: org = 0x00000000, len = 8
-    interrupts_rom : org = 0x00001000, len = 0x2000
-    flash     	: org = 0x00000008, len = 1M-8
-    ram       	: org = 0x40000000, len = 128k
-}
-
-ENTRY(_reset_address)
-
-REGION_ALIAS("INTR", interrupts_rom)
-
 /*
  * Derived constants.
  */
-__flash_size__          = LENGTH(flash);
-__flash_start__         = ORIGIN(flash);
-__flash_end__           = ORIGIN(flash) + LENGTH(flash);
 
-__ram_size__            = LENGTH(ram);
-__ram_start__           = ORIGIN(ram);
-__ram_end__             = ORIGIN(ram) + LENGTH(ram);
+}
+MEMORY
+{
+    flash_boot	: org = 0x00000000, len = 12
+    flash     	: org  = 0x0000000c, len = 1M-12
+//theoretically if the code section overlaps with the interrupt table then the linker should give an error
+// BEWARE in case it doesnt and code size exceeds 1M-12-0x2000 (0x2000 is size of interrupt tables section)
+//incase it gives an error then the interrupt tables must be moved to some other section of the flash
+    ram       	: org = 0x40000000, len = 128k
+}
+
+//REGION_ALIAS("INTR", interrupts_rom)
+
+
 
 SECTIONS
 {
-    .boot : ALIGN(16) SUBALIGN(16)
-    {
-        KEEP(*(.boot))
-    } > flash_rchw
+     __flash_start__         = ADDR(flash);
+     __flash_end__           = ENDADDR(flash);
 
-	.isrVectorTable : ALIGN(4096)
+     __ram_start__           = ADDR(ram);
+     __ram_end__             = ENDADDR(ram);
+
+      
+    .boot  ALIGN(16) : {
+        *(.boot)
+        *(.branch_reset)
+    } > flash_boot
+
+
+    .code : 
+    {    
+      _reset_address = .;
+      *(.crt0)
+      *(.vletext)
+      *(.vletext.memcpy)  /*on including GTM module it asked for .text_vle.memcpy in linker*/
+      // removed *(.text_vle.*) 
+      . = ALIGN(16);
+    } >  flash
+         
+//    .vletext  ALIGN(16) :
+//    {
+//        *(.vletext)
+//        // removed *(.text_vle.*)
+//	*(.gnu.linkonce.t_vle)// changed to *(.gnu.linkonce.t_vle.*) *(.gnu.linkonce.t_vle)
+//    } > flash
+
+    .text  ALIGN(16):
+    {
+        *(.text)
+        //removed *(.text.*)
+	*(.gnu.linkonce.t)// changed *(.gnu.linkonce.t.*) to *(.gnu.linkonce.t)
+    } > flash
+
+    .rodata  ALIGN(16):
+    {
+        *(.glue_7t)
+        *(.glue_7)
+	*(.gcc)//changd *(.gcc*) to         *(.gcc)
+        *(.rodata)
+	//removed *(.rodata.*)
+        *(.rodata1)
+    } > flash
+
+    .sdata2  ALIGN(16):
+    {
+        __sdata2_start__ = . + 0x8000;
+        *(.sdata2)
+	// removed*(.sdata2.*)
+        *(.gnu.linkonce.s2)//changed *(.gnu.linkonce.s2.*) to *(.gnu.linkonce.s2)
+	*(.sbss2)
+	// removed         *(.sbss2.*)
+	*(.gnu.linkonce.sb2)        //changed *(.gnu.linkonce.sb2.*) to *(.gnu.linkonce.sb2)
+    } > flash
+
+    .romdata  ALIGN(16) :
+    {
+        __romdata_start__ = .;
+    } > flash
+
+//this must only be done when everything has been writtnen to the flash
+//theoretically if the code section overlaps with the interrupt table then the linker should give an error
+// BEWARE in case it doesnt and code size exceeds 1M-12-0x2000
+//incase it gives an error then the interrupt tables must be moce to some other section of the flash
+    .isrVectorTable ALIGN(65536) :
     {
     	__IVPR_BASE_ = .;
     	*(.isrTrapTable)
@@ -63,58 +121,10 @@ SECTIONS
       	__ISR_BASE_ = .;
       	*(.interrupt_table)
 	} > flash
-      
-    .code : 
-    {    
-      _reset_address: = .;
-      *(.crt0)
-      *(.text_vle)
-      *(.text_vle.memcpy)  /*on including GTM module it asked for .text_vle.memcpy in linker*/
-      *(.text_vle.*)
-      . = ALIGN(16);
-    } >  flash
-         
-    .text_vle : ALIGN(16) SUBALIGN(16)
-    {
-        *(.text_vle)
-        *(.text_vle.*)
-        *(.gnu.linkonce.t_vle.*)
-    } > flash
+    
 
-    .text : ALIGN(16) SUBALIGN(16)
-    {
-        *(.text)
-        *(.text.*)
-        *(.gnu.linkonce.t.*)
-    } > flash
 
-    .rodata : ALIGN(16) SUBALIGN(16)
-    {
-        *(.glue_7t)
-        *(.glue_7)
-        *(.gcc*)
-        *(.rodata)
-        *(.rodata.*)
-        *(.rodata1)
-    } > flash
-
-    .sdata2 : ALIGN(16) SUBALIGN(16)
-    {
-        __sdata2_start__ = . + 0x8000;
-        *(.sdata2)
-        *(.sdata2.*)
-        *(.gnu.linkonce.s2.*)
-        *(.sbss2)
-        *(.sbss2.*)
-        *(.gnu.linkonce.sb2.*)
-    } > flash
-
-    .romdata : ALIGN(16) SUBALIGN(16)
-    {
-        __romdata_start__ = .;
-    } > flash
-
-    .stacks : ALIGN(16) SUBALIGN(16)
+    .stacks  ALIGN(16):
     {
         . = ALIGN(8);
         __irq_stack_base__ = .;
@@ -135,33 +145,35 @@ SECTIONS
         . = ALIGN(4);
         __data_start__ = .;
         *(.data)
-        *(.data.*)
-        *(.gnu.linkonce.d.*)
-        __sdata_start__ = . + 0x8000;
-        *(.sdata)
-        *(.sdata.*)
-        *(.gnu.linkonce.s.*)
+        // removed *(.data.*)
         __data_end__ = .;
+    } > ram
+//        __sdata_start__ = . + 0x8000;
+    .sdata :
+    {
+        __sdata_start__ = . + 0x8000;
+	*(.sdata)
+        __sdata_end__ = .;
     } > ram
 
     .sbss :
     {
         __bss_start__ = .;
         *(.sbss)
-        *(.sbss.*)
-        *(.gnu.linkonce.sb.*)
+        // removed *(.sbss.*)
+        *(.gnu.linkonce.sb)// changed *(.gnu.linkonce.sb.*) to *(.gnu.linkonce.sb)
         *(.scommon)
     } > ram
 
     .bss :
     {
         *(.bss)
-        *(.bss.*)
-        *(.gnu.linkonce.b.*)
+        //removed *(.bss.*)
+	*(.gnu.linkonce.b)        // changed *(.gnu.linkonce.b.*) to *(.gnu.linkonce.b)
         *(COMMON)
         __bss_end__ = .;
     } > ram
-
+    _start = ADDR(.boot);
     __heap_base__   = __bss_end__;
     __heap_end__    = __ram_end__;
 }
