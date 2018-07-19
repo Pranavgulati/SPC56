@@ -2,5 +2,8 @@
 #component hello_world_c
 [Program]
 	-object_dir=${%option_value(-object_dir)}/module
-hello.c
-tgt\standalone_romrun.ld
+tgt\SPC56EL70.ld
+intc.c
+main.c
+me.c
+pit.c

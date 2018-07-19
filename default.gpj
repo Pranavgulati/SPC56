@@ -4,8 +4,32 @@ defineConfig ("Release" "REL" "tgt\release.gpc")
 primaryTarget=ppc_standalone.tgt
 #component top_level_project
 [Project]
-	-bsp spc564,564Lx
 	:sourceDir=.
+	-DPROCESSOR=CPU_SPC56EL
+	-DCPU_SPC560B=0
+	-DCPU_SPC560P=1
+	-DCPU_SPC56EL=2
+	-gnu99
+	--slash_comment
+	--gnu_asm
+	-pic
+	-AltiVec
+	-vle_errata_010385
+	-pid
+	-farcallpatch
+	-vle
+	-convert_ppc_asm_to_vle
+	--preprocess_linker_directive_full
+	-preprocess_assembly_files
+	-asm3g
+	--assembler_warnings
+	-keepmap
+	-map
 	--ee
+	-I'.\\src\\include'
+	-bsp spc564,564Lx
+	-delete
+	-uvfd
+	-Mu
+	-Mx
 src\module.gpj		[Program]
-tgt\resources.gpj		[Project]
