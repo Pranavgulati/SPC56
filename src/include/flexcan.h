@@ -38,8 +38,6 @@
 //#define FLEXCAN_B_RX_PCR *((VUINT16 *)(0xFFFE80A4))
 //#define FLEXCAN_C_RX_PCR *((VUINT16 *)(0xFFFE80AA))
 
-#define PASS 0
-#define FAIL 1
 
 #define TX 1
 #define RX 0

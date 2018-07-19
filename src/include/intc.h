@@ -46,5 +46,5 @@
 	void initIrqVectors(void);
 	void initINTC(void);
 	void enableIrq(void);
-
+	void INTC_Init(void);
 #endif /* INTC_H_ */
