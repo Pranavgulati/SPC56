@@ -1,0 +1,7 @@
+Flashing a program to the SPC564 board 
+======================================= 
+
+To program the internal flash memory on the SPC564, the RAM base address 
+must be set to 0x40000100. In the flash dialog, enter this address in the 
+RAM base text field. If programming using the flash burn command, append 
+-rambase=0x40000100 to the command line. 

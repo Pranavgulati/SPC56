@@ -1,0 +1,11 @@
+#!gbuild
+defineConfig ("Debug" "DBG" "tgt\debug.gpc")
+defineConfig ("Release" "REL" "tgt\release.gpc")
+primaryTarget=ppc_standalone.tgt
+#component top_level_project
+[Project]
+	-bsp spc564,564Lx
+	:sourceDir=.
+	--ee
+src\module.gpj		[Program]
+tgt\resources.gpj		[Project]

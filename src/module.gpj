@@ -1,0 +1,6 @@
+#!gbuild
+#component hello_world_c
+[Program]
+	-object_dir=${%option_value(-object_dir)}/module
+hello.c
+tgt\standalone_romrun.ld
