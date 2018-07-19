@@ -8,8 +8,9 @@
 #include "common.h"
 #include "me.h"
 #include "pit.h"
+#include "intc.h"
 #include "interrupts56xx.h"
-#include "flexcan.h"
+
 
 
 
@@ -35,7 +36,7 @@
 #define RGM_REG_FESDES      0x0000    // register offset from RGM_BASE
 #define RGM_DES_MASK        0x8000FFFF  // Destructive resets status bit mask
 
-void main(void);
+int main(void);
 void AIPS_Init(void);
 
 
@@ -79,33 +80,68 @@ void AIPS_Init(void)
 // Returns:     none
 // Description:
 
-void main(void)
+int main(void)
 {
-	int i;
 
 	AIPS_Init();			// Initialize AIPS bridge
 	ME_Init();				// Initialize all basic modules - ME, CGM, ...
-	//INTC_Init();			// Initialize interrupt controller
-	PIT_Init();
-
-
-
+	INTC_Init();			// Initialize interrupt controller
 	PORT_PIN_SET2OUTPUT(PORT_PIN_B6); // clkout
 
 	// Initialize GPIO pin D[4] ID 9 (LQFP144) as output
-	PORT_PIN_SET2OUTPUT(PORT_PIN_D4);
-	PORT_PIN_SET2OUTPUT(PORT_PIN_C13);
-	PORT_PIN_SET2OUTPUT(PORT_PIN_C14);
+
+	SIU.PCR[PORT_PIN_C15].R=0x0200;
+	SIU.PCR[PORT_PIN_C14].R=0x0200;
+	SIU.PCR[PORT_PIN_C13].R=0x0200;
+	
+	SIU.GPDO[PORT_PIN_C14].R = 0;
+	SIU.GPDO[PORT_PIN_C14].R = 1;
+	SIU.GPDO[PORT_PIN_C15].R = 0;
+
+	PIT_Init(1000);
+
+
+
 	while(1)
 	{
-		// toggle pin 129
-		SIU.GPDO[PORT_PIN_D4].R = ~SIU.GPDO[PORT_PIN_D4].R;
-		SIU.GPDO[PORT_PIN_C13].R = ~SIU.GPDO[PORT_PIN_C13].R;
-		for (i = 0; i < 1000000;i++)
-		{
-			asm("nop");
-		}
+
 	}
 }
 
 
+/******************************************************************************
+* FUNCTION: 	PIT0_ISR
+* PARAMETERS:	void
+* DESCRIPTION:	Service routine for PIT IRQ
+* RETURNS:		void
+*******************************************************************************/
+void PIT_ISR(void)
+{
+	static uint32 Pit0Ctr;
+
+	Pit0Ctr++;              				/* Increment interrupt counter */
+		SIU.GPDO[PORT_PIN_C13].R = ~SIU.GPDO[PORT_PIN_C13].R;
+		SIU.GPDO[PORT_PIN_C14].R = ~SIU.GPDO[PORT_PIN_C14].R;
+		SIU.GPDO[PORT_PIN_C15].R = ~SIU.GPDO[PORT_PIN_C15].R;
+	PIT.CH[0].TFLG.B.TIF = 1;    		/* CLear PIT 1 flag by writing 1 */
+}
+
+
+//double underscore denotes that it is not a normal function and must not be called otherwise
+void __external_input_exception() {
+    switch(INTC.IACKR.B.INTVEC){
+        case 59:
+            /* Timer Interrupt */
+            //PIT_ISR();
+	    SIU.GPDO[PORT_PIN_C14].R = ~SIU.GPDO[PORT_PIN_C14].R;
+	    PIT.CH[0].TFLG.B.TIF = 1;    	
+            break;
+	case 60:
+            /* Timer Interrupt */
+            //PIT_ISR();
+		SIU.GPDO[PORT_PIN_C15].R = ~SIU.GPDO[PORT_PIN_C15].R;
+	    PIT.CH[1].TFLG.B.TIF = 1;    	
+            break;
+    }
+
+}

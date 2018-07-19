@@ -15,21 +15,6 @@
 #include "pit.h"
 
 
-/******************************************************************************
-* FUNCTION: 	PIT0_ISR
-* PARAMETERS:	void
-* DESCRIPTION:	Service routine for PIT IRQ
-* RETURNS:		void
-*******************************************************************************/
-void PIT_ISR(void)
-{
-	static uint32 Pit0Ctr;
-
-	Pit0Ctr++;              				/* Increment interrupt counter */
-	SIU.GPDO[PORT_PIN_C14].R = ~SIU.GPDO[PORT_PIN_C14].R ;   //LED 2 blink
-	PIT.CH[0].TFLG.B.TIF = 1;    		/* CLear PIT 1 flag by writing 1 */
-}
-
 
 /******************************************************************************
 * FUNCTION: 	PIT_Init
@@ -40,7 +25,10 @@ void PIT_ISR(void)
 void PIT_Init(uint32 reload)
 {
 	PIT.PITMCR.R = 0x0;
-	PIT.CH[0].LDVAL.R = reload;
+	PIT.CH[0].LDVAL.R = reload*16000;
 	PIT.CH[0].TCTRL.B.TEN = 0x1;
 	PIT.CH[0].TCTRL.B.TIE = 0x1;
+	PIT.CH[1].LDVAL.R = reload*1600;
+	PIT.CH[1].TCTRL.B.TEN = 0x1;
+	PIT.CH[1].TCTRL.B.TIE = 0x1;
 }
