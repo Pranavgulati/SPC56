@@ -65,31 +65,21 @@ SECTIONS
       *(.crt0)
       *(.vletext)
       *(.vletext.memcpy)  /*on including GTM module it asked for .text_vle.memcpy in linker*/
-      // removed *(.text_vle.*) 
       . = ALIGN(16);
     } >  flash
          
-//    .vletext  ALIGN(16) :
-//    {
-//        *(.vletext)
-//        // removed *(.text_vle.*)
-//	*(.gnu.linkonce.t_vle)// changed to *(.gnu.linkonce.t_vle.*) *(.gnu.linkonce.t_vle)
-//    } > flash
-
     .text  ALIGN(16):
     {
         *(.text)
-        //removed *(.text.*)
-	*(.gnu.linkonce.t)// changed *(.gnu.linkonce.t.*) to *(.gnu.linkonce.t)
+	*(.gnu.linkonce.t)
     } > flash
 
     .rodata  ALIGN(16):
     {
         *(.glue_7t)
         *(.glue_7)
-	*(.gcc)//changd *(.gcc*) to         *(.gcc)
+	*(.gcc)
         *(.rodata)
-	//removed *(.rodata.*)
         *(.rodata1)
     } > flash
 
@@ -97,11 +87,9 @@ SECTIONS
     {
         __sdata2_start__ = . + 0x8000;
         *(.sdata2)
-	// removed*(.sdata2.*)
-        *(.gnu.linkonce.s2)//changed *(.gnu.linkonce.s2.*) to *(.gnu.linkonce.s2)
+        *(.gnu.linkonce.s2)
 	*(.sbss2)
-	// removed         *(.sbss2.*)
-	*(.gnu.linkonce.sb2)        //changed *(.gnu.linkonce.sb2.*) to *(.gnu.linkonce.sb2)
+	*(.gnu.linkonce.sb2)
     } > flash
 
     .romdata  ALIGN(16) :
@@ -112,7 +100,7 @@ SECTIONS
 //this must only be done when everything has been writtnen to the flash
 //theoretically if the code section overlaps with the interrupt table then the linker should give an error
 // BEWARE in case it doesnt and code size exceeds 1M-12-0x2000
-//incase it gives an error then the interrupt tables must be moce to some other section of the flash
+//incase it gives an error then the interrupt tables must be moved to some other section of the flash
     .isrVectorTable ALIGN(65536) :
     {
     	__IVPR_BASE_ = .;
@@ -121,9 +109,8 @@ SECTIONS
       	__ISR_BASE_ = .;
       	*(.interrupt_table)
 	} > flash
-    
 
-
+//RAM starts here
     .stacks  ALIGN(16):
     {
         . = ALIGN(8);
@@ -145,10 +132,9 @@ SECTIONS
         . = ALIGN(4);
         __data_start__ = .;
         *(.data)
-        // removed *(.data.*)
         __data_end__ = .;
     } > ram
-//        __sdata_start__ = . + 0x8000;
+
     .sdata :
     {
         __sdata_start__ = . + 0x8000;
@@ -160,20 +146,18 @@ SECTIONS
     {
         __bss_start__ = .;
         *(.sbss)
-        // removed *(.sbss.*)
-        *(.gnu.linkonce.sb)// changed *(.gnu.linkonce.sb.*) to *(.gnu.linkonce.sb)
+        *(.gnu.linkonce.sb)
         *(.scommon)
     } > ram
 
     .bss :
     {
         *(.bss)
-        //removed *(.bss.*)
-	*(.gnu.linkonce.b)        // changed *(.gnu.linkonce.b.*) to *(.gnu.linkonce.b)
+	*(.gnu.linkonce.b)
         *(COMMON)
         __bss_end__ = .;
     } > ram
-    _start = ADDR(.boot);
+    _start = _reset_address;
     __heap_base__   = __bss_end__;
     __heap_end__    = __ram_end__;
 }

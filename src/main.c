@@ -132,14 +132,12 @@ void __external_input_exception() {
     switch(INTC.IACKR.B.INTVEC){
         case 59:
             /* Timer Interrupt */
-            //PIT_ISR();
-	    SIU.GPDO[PORT_PIN_C14].R = ~SIU.GPDO[PORT_PIN_C14].R;
-	    PIT.CH[0].TFLG.B.TIF = 1;    	
+            PIT_ISR();
             break;
 	case 60:
             /* Timer Interrupt */
             //PIT_ISR();
-		SIU.GPDO[PORT_PIN_C15].R = ~SIU.GPDO[PORT_PIN_C15].R;
+	    SIU.GPDO[PORT_PIN_C15].R = ~SIU.GPDO[PORT_PIN_C15].R;
 	    PIT.CH[1].TFLG.B.TIF = 1;    	
             break;
     }

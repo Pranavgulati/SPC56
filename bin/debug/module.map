@@ -1,0 +1,522 @@
+Host OS:	Windows 7 Service Pack 1
+ELXR: Copyright (C) 1983-2017 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2017.5.4
+Build Directory: [Directory] COMP-VAL-WIN50:c:/autoval2/v2017.5-2017-10-03/win32-comp-ecom
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2017-5-comp/src@603870 (built by auto-compiler)
+Revision Date: Wed Oct 04 04:29:40 2017
+
+Release Date: Wed Oct 04 02:00:05 2017
+
+
+
+
+Load Map Fri Jul 20 11:59:22 2018
+Image Summary
+
+  Section              Base      Size(hex)    Size(dec)  SecOffs
+  .boot                00000000  0000000c           12   0000180
+  .code                0000000c  000012c0         4800   000018c
+  .text                000012d0  00000000            0   0000000
+  .rodata              000012d0  00000000            0   0000000
+  .sdata2              000012d0  00000000            0   0000000
+  .romdata             000012d0  00000000            0   0000000
+  .isrVectorTable      00010000  00000800         2048   0010000
+  .stacks              40000000  00000800         2048   0000000
+  .data                40000800  00000020           32   0010800
+  .tls.cond.data       40000820  00000000            0   0000000
+  .sdata               40000820  00000000            0   0000000
+  .sbss                40000820  00000000            0   0000000
+  .bss                 40000820  00000428         1064   0000000
+  .tls.cond.bss        40000c48  00000000            0   0000000
+  .secinfo             40000c48  00000024           36   0010820
+  .syscall             40000c6c  00000006            6   0010844
+  .fixaddr             40000c74  0000001c           28   001084c
+  .fixtype             40000c90  00000007            7   0010868
+  .PPC.EMB.apuinfo     00000000  00000024           36   001086f
+  .gstackfix           00000000  0000000c           12   0010894
+
+Load Map Fri Jul 20 11:59:22 2018
+Module Summary
+
+  Origin+Size    Section          Module
+000007c4+000114  .vletext -> .code crt0.o
+00000000+00000c  .boot            crt0.o
+0000000c+0007b6  .crt0 -> .code   crt0.o
+000008d8+00008e  .vletext -> .code intc.o
+00010000+0000f8  .isrTrapTable -> .isrVectorTable intc.o
+00000966+00014c  .vletext -> .code main.o
+40000820+000004  .bss             main.o
+00000ab2+000150  .vletext -> .code me.o
+00000c02+00005a  .vletext -> .code pit.o
+40000800+000004  .data            libmulti.a
+40000824+0003e8  .bss             libmulti.a
+00000c5c+000008  .vletext -> .code libmulti.a
+00000c64+000042  .vletext -> .code libansi.a(ccexit.o)
+00000ca6+0002aa  .vletext -> .code libstartup.a(ind_crt0.o)
+00000f50+000054  .vletext -> .code libstartup.a(ind_mset.o)
+00000fa4+000182  .vletext -> .code libstartup.a(ind_mcpy.o)
+00001126+00004a  .vletext -> .code libsys.a(ind_exit.o)
+40000c0c+000004  .bss             libsys.a(ind_exit.o)
+40000c6c+000006  .syscall         libsys.a(ind_dots.o)
+00001170+000034  .vletext -> .code libsys.a(ind_call.o)
+40000c74+00001c  .fixaddr         libsys.a(ind_crt1.o)
+40000c90+000007  .fixtype         libsys.a(ind_crt1.o)
+000011a4+0000cc  .vletext -> .code libsys.a(ind_crt1.o)
+40000804+00001c  .data            libsys.a(ind_crt1.o)
+40000c10+000004  .bss             libsys.a(ind_crt1.o)
+00001270+000006  .vletext -> .code libsys.a(ind_lock.o)
+00001276+00000c  .vletext -> .code libsys.a(ind_errn.o)
+40000c14+000004  .bss             libsys.a(ind_errn.o)
+00001282+000014  .vletext -> .code libarch.a(indarchh.o)
+00001296+00001a  .vletext -> .code libarch.a(indarchc.o)
+000012b0+00001a  .vletext -> .code libarch.a(indarcha.o)
+00000000+000024  .PPC.EMB.apuinfo <PPC APUinfo>
+00000000+00000c  .gstackfix       <Linker supplemental gstack info>
+40000c48+000024  .secinfo         <section info>
+40000c18+000030  COMMON -> .bss   <commons>
+
+Load Map Fri Jul 20 11:59:22 2018
+Global Symbols (sorted alphabetically)
+
+ .code            00000966+000068   AIPS_Init
+ .code            00000af2+000066   Clock_Init
+                  00000000+0000f0 D Clock_Init_bak
+ .code            00000914+000052   INTC_Init
+ .isrVectorTable  00010000+0000f8   IVOR_table
+ .code            000008dc+000032   Interrupt_SW
+ .code            00000b58+0000aa   ME_Init
+ .code            00000ab2+000040   ME_ModeTransition
+ .code            00000a28+00003a   PIT_ISR
+ .code            00000c02+00005a   PIT_Init
+ .bss             40000820+000004   Pit0Ctr.PIT_ISR.C.3A.5CUsers.5CASE.2DAdmin.5CDocuments.5CGHS.20Multi.5Cobjs.5Cdebug.5Cmodule.5Cmain..0
+                  00000000+000002 D SwIrq4Handler
+ .code            00001126+00004a   _Exit
+ .sdata2          000092d0+000000   _SDA2_BASE_
+ .sdata           40008820+000000   _SDA_BASE_
+ .isrVectorTable  00010800+000000   __ISR_BASE_
+ .isrVectorTable  00010000+000000   __IVPR_BASE_
+                  00000000+000000 U __atexit_cleanup_func
+ .bss             40000c48+000000   __bss_end__
+ .sbss            40000820+000000   __bss_start__
+                  00000000+000000 U __cpp_exception_cleanup
+                  00000000+000000 U __cpp_exception_init
+ .data            40000820+000000   __data_end__
+ .data            40000800+000000   __data_start__
+ .syscall         40000c6c+000006   __dotsyscall
+ .code            000007be+000000   __early_init
+ .code            00000a62+000050   __external_input_exception
+                  00100000+000000   __flash_end__
+                  0000000c+000000   __flash_start__
+                  00000000+00000a D __gh_errno_ptr
+                  00000000+00000c D __gh_get_errno
+                  00000000+000000 U __gh_iob_init
+ .code            00001274+000002   __gh_lock_init
+ .code            00001276+00000c   __gh_set_errno
+ .code            00001270+000002   __ghsLock
+ .code            00001272+000002   __ghsUnlock
+                  00000000+000022 D __ghs_at_exit
+                  00000000+000000 U __ghs_board_cache_sync
+                  00000000+000000 U __ghs_board_devices_init
+                  00000000+000000 U __ghs_board_memory_init
+                  00000000+000000 U __ghs_checksum
+                  00000000+000000 U __ghs_coverage_init
+                  00000000+000000 U __ghs_cpp_exception_cleanup
+                  00000000+000000 U __ghs_cpp_exception_init
+                  00000000+000000 U __ghs_decompress
+ .code            00000ca6+0002aa   __ghs_ind_crt0
+ .code            000011a4+0000cc   __ghs_ind_crt1
+                  00000000+000000 U __ghs_init_r14
+                  00000000+000000 U __ghs_init_r15
+                  00000000+000000 U __ghs_init_r16
+                  00000000+000000 U __ghs_init_r17
+                  00000000+000000 U __ghs_init_r18
+                  00000000+000000 U __ghs_init_r19
+                  00000000+000000 U __ghs_init_r20
+                  00000000+000000 U __ghs_init_r21
+                  00000000+000000 U __ghs_init_r22
+                  00000000+000000 U __ghs_init_r23
+ .syscall         40000c6c+000006   __ghs_initial_dotsyscall
+                  00000002+000000   __ghs_log_fee_level
+                  00000000+000000 U __ghs_manprf_init
+                  00000000+000000 U __ghs_rambootcodeend
+                  00000000+000000 U __ghs_rambootcodestart
+                  00000000+000000 U __ghs_rombootcodeend
+                  00000000+000000 U __ghs_rombootcodestart
+                  00000000+000000 U __ghs_set_stack_chk_guard
+ .code            00001170+000034   __ghs_syscall
+                  00000000+00003a D __ghs_syscall64
+                  00000000+000000 U __ghs_undefined_func
+ .fixaddr         40000c74+000000   __ghsbegin_fixaddr
+ .fixtype         40000c90+000000   __ghsbegin_fixtype
+                  00000000+000000 U __ghsbegin_picbase
+                  00000000+000000 U __ghsbegin_pidbase
+                  00000000+000000 U __ghsbegin_robase
+                  00000000+000000 U __ghsbegin_sdabase
+ .sdata2          000012d0+000000   __ghsbegin_sdata2
+ .secinfo         40000c48+000000   __ghsbegin_secinfo
+ .secinfo         40000c6c+000000   __ghsbinfo_aclear
+ .secinfo         40000c6c+000000   __ghsbinfo_acopy
+ .secinfo         40000c48+000024   __ghsbinfo_clear
+ .secinfo         40000c6c+000000   __ghsbinfo_comacopy
+ .secinfo         40000c6c+000000   __ghsbinfo_comcopy
+ .secinfo         40000c6c+000000   __ghsbinfo_comtcopy
+ .secinfo         40000c6c+000000   __ghsbinfo_copy
+ .secinfo         40000c6c+000000   __ghsbinfo_tcopy
+ .code            000008b0+000024   __ghscallpatch___ghs_initial_dotsyscall_.vletext_0_0_crt0.o
+ .secinfo         40000c6c+000000   __ghseinfo_clear
+ .secinfo         40000c6c+000000   __ghseinfo_comcopy
+ .secinfo         40000c6c+000000   __ghseinfo_copy
+ .fixaddr         40000c90+000000   __ghsend_fixaddr
+                  00000000+000000 U __ghsend_stack
+                  40000c48+000000   __heap_base__
+                  40020000+000000   __heap_end__
+ .stacks          40000000+000000   __irq_stack_base__
+ .stacks          40000000+000000   __irq_stack_end__
+ .code            000007c0+000000   __late_init
+ .stacks          40000000+000000   __main_thread_stack_base__
+ .stacks          40000800+000000   __main_thread_stack_end__
+ .stacks          40000000+000000   __process_stack_base__
+ .stacks          40000800+000000   __process_stack_end__
+                  40020000+000000   __ram_end__
+                  40000000+000000   __ram_start__
+ .romdata         000012d0+000000   __romdata_start__
+ .sdata2          000092d0+000000   __sdata2_start__
+ .sdata           40000820+000000   __sdata_end__
+ .sdata           40008820+000000   __sdata_start__
+ .code            00000746+000000   _boot_address
+                  00000000+000000 U _cleanup
+ .code            00001126+00004a   _exit
+ .code            000007ba+000000   _main_exit_handler
+ .bss             40000c18+000030   _multiArgs
+ .data            40000800+000004   _multibufSize
+ .bss             40000824+0003e8   _multibuffer
+ .code            00000c5c+000004   _multiend
+ .code            0000000c+000000   _reset_address
+                  00000000+000004 D _rest32gpr_14_x
+                  00000000+000004 D _rest32gpr_15_x
+                  00000000+000004 D _rest32gpr_16_x
+                  00000000+000004 D _rest32gpr_17_x
+                  00000000+000004 D _rest32gpr_18_x
+                  00000000+000004 D _rest32gpr_19_x
+                  00000000+000004 D _rest32gpr_20_x
+                  00000000+000004 D _rest32gpr_21_x
+                  00000000+000004 D _rest32gpr_22_x
+                  00000000+000004 D _rest32gpr_23_x
+                  00000000+000004 D _rest32gpr_24_x
+                  00000000+000004 D _rest32gpr_25_x
+                  00000000+000004 D _rest32gpr_26_x
+                  00000000+000004 D _rest32gpr_27_x
+                  00000000+000004 D _rest32gpr_28_x
+                  00000000+000004 D _rest32gpr_29_x
+                  00000000+000004 D _rest32gpr_30_x
+                  00000000+00000e D _rest32gpr_31_x
+                  00000000+000004 D _rest64gpr_14_x
+                  00000000+000004 D _rest64gpr_15_x
+                  00000000+000004 D _rest64gpr_16_x
+                  00000000+000004 D _rest64gpr_17_x
+                  00000000+000004 D _rest64gpr_18_x
+                  00000000+000004 D _rest64gpr_19_x
+                  00000000+000004 D _rest64gpr_20_x
+                  00000000+000004 D _rest64gpr_21_x
+                  00000000+000004 D _rest64gpr_22_x
+                  00000000+000004 D _rest64gpr_23_x
+                  00000000+000004 D _rest64gpr_24_x
+                  00000000+000004 D _rest64gpr_25_x
+                  00000000+000004 D _rest64gpr_26_x
+                  00000000+000004 D _rest64gpr_27_x
+                  00000000+000004 D _rest64gpr_28_x
+                  00000000+000004 D _rest64gpr_29_x
+                  00000000+000004 D _rest64gpr_30_x
+                  00000000+000010 D _rest64gpr_31_x
+ .code            000012be+00000c   _restsmall_16
+ .code            000012a4+00000c   _restsmall_32
+                  00000000+000004 D _save32gpr_14_x
+                  00000000+000004 D _save32gpr_15_x
+                  00000000+000004 D _save32gpr_16_x
+                  00000000+000004 D _save32gpr_17_x
+                  00000000+000004 D _save32gpr_18_x
+                  00000000+000004 D _save32gpr_19_x
+                  00000000+000004 D _save32gpr_20_x
+                  00000000+000004 D _save32gpr_21_x
+                  00000000+000004 D _save32gpr_22_x
+                  00000000+000004 D _save32gpr_23_x
+                  00000000+000004 D _save32gpr_24_x
+                  00000000+000004 D _save32gpr_25_x
+                  00000000+000004 D _save32gpr_26_x
+                  00000000+000004 D _save32gpr_27_x
+                  00000000+000004 D _save32gpr_28_x
+ .code            00001282+000004   _save32gpr_29_x
+ .code            00001286+000004   _save32gpr_30_x
+ .code            0000128a+00000c   _save32gpr_31_x
+                  00000000+000004 D _save64gpr_14_x
+                  00000000+000004 D _save64gpr_15_x
+                  00000000+000004 D _save64gpr_16_x
+                  00000000+000004 D _save64gpr_17_x
+                  00000000+000004 D _save64gpr_18_x
+                  00000000+000004 D _save64gpr_19_x
+                  00000000+000004 D _save64gpr_20_x
+                  00000000+000004 D _save64gpr_21_x
+                  00000000+000004 D _save64gpr_22_x
+                  00000000+000004 D _save64gpr_23_x
+                  00000000+000004 D _save64gpr_24_x
+                  00000000+000004 D _save64gpr_25_x
+                  00000000+000004 D _save64gpr_26_x
+                  00000000+000004 D _save64gpr_27_x
+                  00000000+000004 D _save64gpr_28_x
+                  00000000+000004 D _save64gpr_29_x
+                  00000000+000004 D _save64gpr_30_x
+                  00000000+00000c D _save64gpr_31_x
+ .code            000012b0+00000e   _savesmall_16
+ .code            00001296+00000e   _savesmall_32
+                  0000000c+000000   _start
+                  00000000+000002 D dummy
+ .code            0000090e+000006   enableIrq
+ .bss             40000c10+000004   environ
+ .bss             40000c14+000004   errno
+ .code            00000c64+000042   exit
+                  00000000+000002 D initSwIrq4
+ .code            000009ce+00005a   main
+ .code            00000fa4+000182   memcpy
+ .code            00000f50+000054   memset
+ .code            00000c60+000004   multiBreak
+ .code            00000c5c+000000   multiCall
+                  00000000+000000 U undefined_cleanup
+                  00000000+000000 U undefined_cleanup_func
+                  00000000+000002 D unhandled_ISR
+ .code            000008d8+000004   unhandled_IVOR
+
+Load Map Fri Jul 20 11:59:22 2018
+Global Cross Reference
+
+AIPS_Init           main.o                  0009ee
+Clock_Init          me.o                    000bea
+Clock_Init_bak     
+INTC_Init           main.o                  0009f6
+IVOR_table          intc.o                  000932 000936
+Interrupt_SW        intc.o                  010042
+                    crt0.o                  000738 00073c
+ME_Init             main.o                  0009f2
+ME_ModeTransition   me.o                    000abc 000ada 000aee 000bf0 000bf6
+PIT_ISR             main.o                  000a84
+PIT_Init            main.o                  000a22
+Pit0Ctr.PIT_ISR.C.3A.5CUsers.5CASE.2DAdmin.5CDocuments.5CGHS.20Multi.5Cobjs.5Cdebug.5Cmodule.5Cmain..0
+SwIrq4Handler      
+_Exit               libsys.a(ind_exit.o)    00113c 001148 00115c 00116e
+                    libansi.a(ccexit.o)     000c9e
+_SDA2_BASE_        
+_SDA_BASE_         
+__ISR_BASE_        
+__IVPR_BASE_        crt0.o                  0006d8 0006dc
+__atexit_cleanup_func libansi.a(ccexit.o)     000c6e 000c76 000c80
+__bss_end__         crt0.o                  000770 000774
+__bss_start__       crt0.o                  000768 00076c
+__cpp_exception_cleanup libsys.a(ind_exit.o)    00114c 001154
+__cpp_exception_init libsys.a(ind_crt1.o)    40000810
+__data_end__        crt0.o                  000796 00079a
+__data_start__      crt0.o                  00078e 000792
+__dotsyscall        crt0.o                  0007c4
+                    libsys.a(ind_call.o)    001184 001188
+__early_init        crt0.o                  000764
+__external_input_exception main.o                  000a7a 000a80 000a82 000a88
+                    intc.o                  0008ec
+__flash_end__      
+__flash_start__    
+__gh_errno_ptr     
+__gh_get_errno     
+__gh_iob_init       libsys.a(ind_crt1.o)    0011e8 4000080c
+__gh_lock_init      libsys.a(ind_crt1.o)    0011d6 40000808
+__gh_set_errno      libsys.a(ind_call.o)    001194
+__ghsLock           libsys.a(ind_exit.o)    00112e
+__ghsUnlock         libsys.a(ind_exit.o)    001162
+__ghs_at_exit      
+__ghs_board_cache_sync libstartup.a(ind_crt0.o) 000cf0 000cf6
+__ghs_board_devices_init libsys.a(ind_crt1.o)    0011c4 40000804
+__ghs_board_memory_init crt0.o                  0007ca 0007ce 0007d4
+__ghs_checksum      libstartup.a(ind_crt0.o) 000eca 000ece
+__ghs_coverage_init libsys.a(ind_crt1.o)    00121e 40000818
+__ghs_cpp_exception_cleanup libsys.a(ind_exit.o)    00115e
+__ghs_cpp_exception_init libsys.a(ind_crt1.o)    0011fa
+__ghs_decompress    libstartup.a(ind_crt0.o) 000cc0 000cc4
+__ghs_ind_crt0      libstartup.a(ind_crt0.o) 000d00 000d24 000d34 000d40 000d48
+                                            000d4c 000d60 000d68 000d6c 000d70
+                                            000d76 000dbe 000dc2 000dc8 000dde
+                                            000de6 000e08 000e0c 000e10 000e30
+                                            000e34 000e44 000e4c 000e6c 000e70
+                                            000e74 000e94 000e98 000ea4 000ec6
+                                            000ed6 000f02 000f06 000f12 000f16
+                                            000f1e 000f32
+                    crt0.o                  000862
+__ghs_ind_crt1      libsys.a(ind_crt1.o)    0011c2 0011d4 0011e6 0011f8 00120a
+                                            00121c 00122e 001236
+                    libstartup.a(ind_crt0.o) 000ccc 000cd4
+__ghs_init_r14      crt0.o                  000868
+__ghs_init_r15      crt0.o                  00086c
+__ghs_init_r16      crt0.o                  000870
+__ghs_init_r17      crt0.o                  000874
+__ghs_init_r18      crt0.o                  000878
+__ghs_init_r19      crt0.o                  00087c
+__ghs_init_r20      crt0.o                  000880
+__ghs_init_r21      crt0.o                  000884
+__ghs_init_r22      crt0.o                  000888
+__ghs_init_r23      crt0.o                  00088c
+__ghs_initial_dotsyscall crt0.o                  0008c0 0008c4
+__ghs_log_fee_level
+__ghs_manprf_init   libsys.a(ind_crt1.o)    00120c 40000814
+__ghs_rambootcodeend crt0.o                  0008a4
+__ghs_rambootcodestart crt0.o                  0008a0
+__ghs_rombootcodeend crt0.o                  0008ac
+__ghs_rombootcodestart crt0.o                  00080e 000812 0008a8
+__ghs_set_stack_chk_guard libsys.a(ind_crt1.o)    001230 4000081c
+__ghs_syscall       libsys.a(ind_exit.o)    00116a
+__ghs_syscall64    
+__ghs_undefined_func libstartup.a(ind_crt0.o) 000cd0 000cd8
+                    libsys.a(ind_exit.o)    001150 001158
+__ghsbegin_fixaddr  libstartup.a(ind_crt0.o) 000ea8 000eac
+__ghsbegin_fixtype  libstartup.a(ind_crt0.o) 000eb6 000ebe
+__ghsbegin_picbase  crt0.o                  000894
+                    libstartup.a(ind_crt0.o) 000d7a 000d7e
+__ghsbegin_pidbase  crt0.o                  00089c
+                    libstartup.a(ind_crt0.o) 000d8e 000d92
+__ghsbegin_robase   crt0.o                  000898
+                    libstartup.a(ind_crt0.o) 000d84 000d88
+__ghsbegin_sdabase  crt0.o                  0007ee 0007f4
+__ghsbegin_sdata2   crt0.o                  0007fc 000802
+__ghsbegin_secinfo  libstartup.a(ind_crt0.o) 000d28 000d2c 000d38 000d3c
+__ghsbinfo_aclear   libstartup.a(ind_crt0.o) 000db0 000db8
+__ghsbinfo_acopy   
+__ghsbinfo_clear    libstartup.a(ind_crt0.o) 000da2 000da6
+__ghsbinfo_comacopy
+__ghsbinfo_comcopy  libstartup.a(ind_crt0.o) 000e50 000e54
+__ghsbinfo_comtcopy libstartup.a(ind_crt0.o) 000e5a 000e62
+__ghsbinfo_copy     libstartup.a(ind_crt0.o) 000dea 000dee
+__ghsbinfo_tcopy    libstartup.a(ind_crt0.o) 000df8 000e00
+__ghscallpatch___ghs_initial_dotsyscall_.vletext_0_0_crt0.o crt0.o                  0007de
+__ghseinfo_clear    libstartup.a(ind_crt0.o) 000dac 000db4
+__ghseinfo_comcopy  libstartup.a(ind_crt0.o) 000e5e 000e66
+__ghseinfo_copy     libstartup.a(ind_crt0.o) 000df4 000dfc
+__ghsend_fixaddr    libstartup.a(ind_crt0.o) 000eb2 000eba
+__ghsend_stack      crt0.o                  0007e6 0007ec
+__heap_base__      
+__heap_end__       
+__irq_stack_base__ 
+__irq_stack_end__  
+__late_init         crt0.o                  0007ae
+__main_thread_stack_base__
+__main_thread_stack_end__
+__process_stack_base__
+__process_stack_end__ crt0.o                  000746 00074a
+__ram_end__         crt0.o                  0004aa 0004ae
+__ram_start__       crt0.o                  0004a2 0004a6
+__romdata_start__   crt0.o                  000786 00078a
+__sdata2_start__    crt0.o                  000754 000758
+__sdata_end__      
+__sdata_start__     crt0.o                  00075c 000760
+_boot_address       crt0.o                  000014
+_cleanup            libansi.a(ccexit.o)     000c86 000c8e 000c98
+_exit              
+_main_exit_handler  crt0.o                  0007b6 0007ba
+_multiArgs         
+_multibufSize      
+_multibuffer       
+_multiend          
+_reset_address      crt0.o                  000004 000008
+_rest32gpr_14_x    
+_rest32gpr_15_x    
+_rest32gpr_16_x    
+_rest32gpr_17_x    
+_rest32gpr_18_x    
+_rest32gpr_19_x    
+_rest32gpr_20_x    
+_rest32gpr_21_x    
+_rest32gpr_22_x    
+_rest32gpr_23_x    
+_rest32gpr_24_x    
+_rest32gpr_25_x    
+_rest32gpr_26_x    
+_rest32gpr_27_x    
+_rest32gpr_28_x    
+_rest32gpr_29_x    
+_rest32gpr_30_x    
+_rest32gpr_31_x    
+_rest64gpr_14_x    
+_rest64gpr_15_x    
+_rest64gpr_16_x    
+_rest64gpr_17_x    
+_rest64gpr_18_x    
+_rest64gpr_19_x    
+_rest64gpr_20_x    
+_rest64gpr_21_x    
+_rest64gpr_22_x    
+_rest64gpr_23_x    
+_rest64gpr_24_x    
+_rest64gpr_25_x    
+_rest64gpr_26_x    
+_rest64gpr_27_x    
+_rest64gpr_28_x    
+_rest64gpr_29_x    
+_rest64gpr_30_x    
+_rest64gpr_31_x    
+_restsmall_16       libarch.a(indarcha.o)   0012b0
+                    libansi.a(ccexit.o)     000ca2
+_restsmall_32       libarch.a(indarchc.o)   001296
+_save32gpr_14_x    
+_save32gpr_15_x    
+_save32gpr_16_x    
+_save32gpr_17_x    
+_save32gpr_18_x    
+_save32gpr_19_x    
+_save32gpr_20_x    
+_save32gpr_21_x    
+_save32gpr_22_x    
+_save32gpr_23_x    
+_save32gpr_24_x    
+_save32gpr_25_x    
+_save32gpr_26_x    
+_save32gpr_27_x    
+_save32gpr_28_x    
+_save32gpr_29_x     libsys.a(ind_crt1.o)    0011ac
+_save32gpr_30_x     libarch.a(indarchh.o)   001282
+_save32gpr_31_x     libarch.a(indarchh.o)   001286
+_save64gpr_14_x    
+_save64gpr_15_x    
+_save64gpr_16_x    
+_save64gpr_17_x    
+_save64gpr_18_x    
+_save64gpr_19_x    
+_save64gpr_20_x    
+_save64gpr_21_x    
+_save64gpr_22_x    
+_save64gpr_23_x    
+_save64gpr_24_x    
+_save64gpr_25_x    
+_save64gpr_26_x    
+_save64gpr_27_x    
+_save64gpr_28_x    
+_save64gpr_29_x    
+_save64gpr_30_x    
+_save64gpr_31_x    
+_savesmall_16       libansi.a(ccexit.o)     000c66
+_savesmall_32       libsys.a(ind_exit.o)    001128
+_start              crt0.o                 
+dummy              
+enableIrq           intc.o                  000956
+environ             libsys.a(ind_crt1.o)    001258 00125c
+errno               libsys.a(ind_errn.o)    001276 00127a
+exit                libansi.a(ccexit.o)     000c7e 000c96
+                    crt0.o                  0007c4
+                    libsys.a(ind_crt1.o)    00126c
+initSwIrq4         
+main                main.o                  000a26
+                    crt0.o                  0007b2
+                    libsys.a(ind_crt1.o)    001268
+memcpy              libstartup.a(ind_crt0.o) 000ce6 000cec
+memset              libstartup.a(ind_crt0.o) 000cdc 000ce2
+multiBreak          libmulti.a              000c5c
+multiCall          
+undefined_cleanup   libansi.a(ccexit.o)     000c8a 000c92
+undefined_cleanup_func libansi.a(ccexit.o)     000c72 000c7a
+unhandled_ISR      
+unhandled_IVOR      intc.o                  010002 010012 010022 010032 010052
+                                            010062 010072 010082 010092 0100a2
+                                            0100b2 0100c2 0100d2 0100e2 0100f2
+                    crt0.o                  0006e4 0006e8

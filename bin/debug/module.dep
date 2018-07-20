@@ -1,0 +1,24 @@
+C:\Users\ASE-Admin\Documents\GHS\ Multi\bin\debug\module: tgt\\SPC56EL70.ld \
+ C:\ghs\comp_201754\lib\ppcvle\crt0.o objs\debug\module\crt0.o \
+ objs\debug\module\intc.o objs\debug\module\main.o objs\debug\module\me.o \
+ objs\debug\module\pit.o C:\ghs\comp_201754\lib\ppcvle\libmulti.a \
+ C:\ghs\comp_201754\lib\ppcvle\libfmalloc.a \
+ C:\ghs\comp_201754\lib\ppcvle\libwchar_s32.a \
+ C:\ghs\comp_201754\lib\ppcvle\libansi.a \
+ C:\ghs\comp_201754\lib\ppcvle\libwc_s32.a \
+ C:\ghs\comp_201754\lib\ppcvle\libmath.a \
+ C:\ghs\comp_201754\lib\ppcvle\libind.a \
+ C:\ghs\comp_201754\lib\ppcvle\libstartup.a \
+ C:\ghs\comp_201754\lib\ppcvle\libsys.a \
+ C:\ghs\comp_201754\lib\ppcvle\libarch.a
+
+:cmdList=ccppc $(FILETYPEOPTIONS) $(OBJECTS) -MD -I'.\\src\\include' -G -Odebug -DPROCESSOR=CPU_SPC56EL -DCPU_SPC560B=0 -DCPU_SPC560P=1 -DCPU_SPC56EL=2 -gnu99 --slash_comment --gnu_asm -pic -AltiVec -vle_errata_010385 -pid -farcallpatch -vle -convert_ppc_asm_to_vle --preprocess_linker_directive_full --assembler_warnings -keepmap -map --ee -bsp spc564,564Lx -delete -uvfd -Mu -Mx -object_dir=objs\debug\module -top_project "C:\\Users\\ASE-Admin\\Documents\\GHS Multi\\default.gpj" -o "C:\\Users\\ASE-Admin\\Documents\\GHS Multi\\bin\\debug\\module" ; 
+:cmdHash=0x9a47d4c5
+
+:objList=objs\debug\module\crt0.o tgt\SPC56EL70.ld objs\debug\module\intc.o objs\debug\module\main.o objs\debug\module\me.o objs\debug\module\pit.o ; 
+:objHash=0xe8104056
+
+:installDir=c:\ghs\comp_201754
+:installDirHash=0x9d4d864f
+
+:config=DBG
