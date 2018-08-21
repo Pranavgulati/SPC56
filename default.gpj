@@ -32,4 +32,5 @@ primaryTarget=ppc_standalone.tgt
 	-uvfd
 	-Mu
 	-Mx
+	:binDir=C:\Users\ASE-Admin\Desktop\prgu\NextCloud\module
 src\module.gpj		[Program]

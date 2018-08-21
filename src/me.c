@@ -58,72 +58,72 @@ void ME_ModeTransition (uint8_t modeToEnter){
 
 }//me_modeTransition
 
-
-void Clock_Init_bak(void)
-{
-    
-    // !!! Enable all peripheral clocks - added for LEOPARD !!!
-	CGM.SCDC0.R = 0x80808080; //system clock divider
-
-
-	//Disable both CMUs (it disables PLL frequency check, XOSC check still works)
-	CGM.CMU_0_CSR.B.CME_A = 0;
-	CGM.CMU_1_CSR.B.CME_A = 0;
-	CGM.CMU_0_CSR.B.RCDIV = 3; // set divider to avoid reset when XOSC is enabled (Frc/2^div < Fosc)
-
-
-    //Configure all Auxiliary Clock Selectors
-    CGM.AC0SC.R = 4; //source = system PLL
-    CGM.AC1SC.R = 0; //source = secondary PLL			
-    CGM.AC2SC.R = 4; //source = system PLL
-
-    // !!! Clock Sources for FMPLL Modules - added for LEOPARD !!! */
-    CGM.AC3SC.B.SELCTL = 1; //select crystal oscillator
-    CGM.AC4SC.B.SELCTL = 1; //select crystal oscillator
-	
-    //enable dividers (do not divide)
-    CGM.AC0DC.R	= 0x80000000; 
-    CGM.AC1DC.R	= 0x80000000;
-    CGM.AC2DC.R = 0x80800000;	
-
-    //Setup system PLL (PLL0)
-    CGM.FMPLL[0].CR.R = 0x03200012; //set PLL to 120Mhz for 40 MHz crystal
-    CGM.AC3SC.B.SELCTL = 1; // AUX Clock selector 3
-    CGM.AC4SC.B.SELCTL = 1; // AUX Clock selector 4
-
-    //PLL0 120 MHz
-    CGM.FMPLL[0].CR.B.IDF  = 0x2;       // Divide by 3
-    CGM.FMPLL[0].CR.B.ODF  = 0x1;       // 0x0 Divide by 2; 0x1 Divide by 4; 0x2 Divide by 8; 0x3 Divide by 16;
-    CGM.FMPLL[0].CR.B.NDIV = 36;        // LDF
-    
 /*
-    //Configure PLL and Switch to RUN0 mode
-    CGM.FMPLL[0].CR.R = (FMPLL_IDF << 26 | FMPLL_ODF << 24 | FMPLL_NDIV << 16) & 0x3F7F0000;
-    CGM.OCDSSC.B.SELCTL = 2; //CLKOUT sourced from PLL
-
-
-    //Configure Crystal oscillator circuit
-    //( OSCBYP=0, EOCV=16, M_OSC=0, OSCDIV= 0, I_OSC=0 (I_OSC is cleared by writing 1)) 
-    CGM.OSC_CTL.R = (0x0 << 31) | (0x10 << 16) | (0x0 << 15) | (0x0 << 8) | (0x1 << 7) | 1;        
-    
-    //Setup system PLL (PLL0)    
-    CGM.FMPLL[0].CR.R = 0x11200059; //set PLL to 64Mhz for 40 MHz crystal
-    
-    //Disable both CMUs (it disables PLL frequency check, XOSC check still works)
-    CGM.CMU_0_CSR.B.CME_A = 0;         
-    CGM.CMU_1_CSR.B.CME_A = 0;
-
-    CGM.CMU_0_CSR.B.RCDIV = 3; // set divider to avoid reset when XOSC is enabled (Frc/2^div < Fosc)    */
-    
-    //Turn on External Clock Output (configure the CLKOUT pad)        
-    //set PA=1
-
-    SIU.PCR[PORT_PIN_CLKOUT].R = 0x0404;  //configure CLKOUT pin (pad 22 (for PICTUS) - PB[6])
-    CGM.OCDSSC.B.SELCTL = 2;              //output clock source selection (0=16M IRC, 1=4M crystal oscilator, 2=system PLL)
-
-    CGM.OCDSSC.B.SELDIV = 2;              //divider is (2 = /4, 0 = /1, 1 = /2)    
-    CGM.OCEN.B.EN = 1;                    //enable clock output (for debugging purposes)
-}
+ - void Clock_Init_bak(void)
+ - {
+ -     
+ -     // !!! Enable all peripheral clocks - added for LEOPARD !!!
+ - 	CGM.SCDC0.R = 0x80808080; //system clock divider
+ - 
+ - 
+ - 	//Disable both CMUs (it disables PLL frequency check, XOSC check still works)
+ - 	CGM.CMU_0_CSR.B.CME_A = 0;
+ - 	CGM.CMU_1_CSR.B.CME_A = 0;
+ - 	CGM.CMU_0_CSR.B.RCDIV = 3; // set divider to avoid reset when XOSC is enabled (Frc/2^div < Fosc)
+ - 
+ - 
+ -     //Configure all Auxiliary Clock Selectors
+ -     CGM.AC0SC.R = 4; //source = system PLL
+ -     CGM.AC1SC.R = 0; //source = secondary PLL			
+ -     CGM.AC2SC.R = 4; //source = system PLL
+ - 
+ -     // !!! Clock Sources for FMPLL Modules - added for LEOPARD !!! $*@/@
+ -     CGM.AC3SC.B.SELCTL = 1; //select crystal oscillator
+ -     CGM.AC4SC.B.SELCTL = 1; //select crystal oscillator
+ - 	
+ -     //enable dividers (do not divide)
+ -     CGM.AC0DC.R	= 0x80000000; 
+ -     CGM.AC1DC.R	= 0x80000000;
+ -     CGM.AC2DC.R = 0x80800000;	
+ - 
+ -     //Setup system PLL (PLL0)
+ -     CGM.FMPLL[0].CR.R = 0x03200012; //set PLL to 120Mhz for 40 MHz crystal
+ -     CGM.AC3SC.B.SELCTL = 1; // AUX Clock selector 3
+ -     CGM.AC4SC.B.SELCTL = 1; // AUX Clock selector 4
+ - 
+ -     //PLL0 120 MHz
+ -     CGM.FMPLL[0].CR.B.IDF  = 0x2;       // Divide by 3
+ -     CGM.FMPLL[0].CR.B.ODF  = 0x1;       // 0x0 Divide by 2; 0x1 Divide by 4; 0x2 Divide by 8; 0x3 Divide by 16;
+ -     CGM.FMPLL[0].CR.B.NDIV = 36;        // LDF
+ -     
+ - @/@*$
+ -     //Configure PLL and Switch to RUN0 mode
+ -     CGM.FMPLL[0].CR.R = (FMPLL_IDF << 26 | FMPLL_ODF << 24 | FMPLL_NDIV << 16) & 0x3F7F0000;
+ -     CGM.OCDSSC.B.SELCTL = 2; //CLKOUT sourced from PLL
+ - 
+ - 
+ -     //Configure Crystal oscillator circuit
+ -     //( OSCBYP=0, EOCV=16, M_OSC=0, OSCDIV= 0, I_OSC=0 (I_OSC is cleared by writing 1)) 
+ -     CGM.OSC_CTL.R = (0x0 << 31) | (0x10 << 16) | (0x0 << 15) | (0x0 << 8) | (0x1 << 7) | 1;        
+ -     
+ -     //Setup system PLL (PLL0)    
+ -     CGM.FMPLL[0].CR.R = 0x11200059; //set PLL to 64Mhz for 40 MHz crystal
+ -     
+ -     //Disable both CMUs (it disables PLL frequency check, XOSC check still works)
+ -     CGM.CMU_0_CSR.B.CME_A = 0;         
+ -     CGM.CMU_1_CSR.B.CME_A = 0;
+ - 
+ -     CGM.CMU_0_CSR.B.RCDIV = 3; // set divider to avoid reset when XOSC is enabled (Frc/2^div < Fosc)    $*@/@
+ -     
+ -     //Turn on External Clock Output (configure the CLKOUT pad)        
+ -     //set PA=1
+ - 
+ -     SIU.PCR[PORT_PIN_CLKOUT].R = 0x0404;  //configure CLKOUT pin (pad 22 (for PICTUS) - PB[6])
+ -     CGM.OCDSSC.B.SELCTL = 2;              //output clock source selection (0=16M IRC, 1=4M crystal oscilator, 2=system PLL)
+ - 
+ -     CGM.OCDSSC.B.SELDIV = 2;              //divider is (2 = /4, 0 = /1, 1 = /2)    
+ -     CGM.OCEN.B.EN = 1;                    //enable clock output (for debugging purposes)
+ - }*/
 void Clock_Init(){
 
     // !!! Enable all peripheral clocks - added for LEOPARD !!!
@@ -154,15 +154,15 @@ void ME_Init(void)
     //Disable SoftwareWatchdogTimer in SWT_cR
     SWT.SR.R        = 0xC520;
     SWT.SR.R        = 0xD928; //unlock peripheral
-    SWT.CR.R 	    = 0x8000010A;
+    SWT.CR.R 	    = 0xFF00010A;
 
     //Choose what modes should be enabled - Mode Enable register (ME_ME)
     //ME.MER.R   = 0x18; //RUN0 and DRUN modes are enabled by default
 
     //Configure ModeConfiguration registers, i.e. ME_RUN0_MC and ME_DRUN_MC in this case
     //(Turn on FLASH, PLL0, xosc0on, irc 16M, select System Clock source)
-//    ME.DRUN.R       = 0x001F0070 | 0; //SYSCLK = 0 (IRC 16M), = 2 (4MHz crystal oscilator), = 4(System PLL)
-    ME.RUN[0].R     = 0x001F0070;
+    ME.DRUN.R       = 0x001F0070 | 0x2; //SYSCLK = 0 (IRC 16M), = 2 (40MHz crystal oscilator), = 4(System PLL)
+    ME.RUN[0].R     = 0x001F0070 | 0x2;
 
     //Configure RunPeripheralConfiguration registers in ME_RUN_PC1, ME_LP_PC1
     //(Specifies at what modes is peripheral enabled. Referred to by PCTL registers)

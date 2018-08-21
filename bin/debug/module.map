@@ -10,7 +10,7 @@ Release Date: Wed Oct 04 02:00:05 2017
 
 
 
-Load Map Fri Jul 20 11:59:22 2018
+Load Map Wed Aug 15 14:51:28 2018
 Image Summary
 
   Section              Base      Size(hex)    Size(dec)  SecOffs
@@ -35,7 +35,7 @@ Image Summary
   .PPC.EMB.apuinfo     00000000  00000024           36   001086f
   .gstackfix           00000000  0000000c           12   0010894
 
-Load Map Fri Jul 20 11:59:22 2018
+Load Map Wed Aug 15 14:51:28 2018
 Module Summary
 
   Origin+Size    Section          Module
@@ -75,7 +75,7 @@ Module Summary
 40000c48+000024  .secinfo         <section info>
 40000c18+000030  COMMON -> .bss   <commons>
 
-Load Map Fri Jul 20 11:59:22 2018
+Load Map Wed Aug 15 14:51:28 2018
 Global Symbols (sorted alphabetically)
 
  .code            00000966+000068   AIPS_Init
@@ -285,7 +285,7 @@ Global Symbols (sorted alphabetically)
                   00000000+000002 D unhandled_ISR
  .code            000008d8+000004   unhandled_IVOR
 
-Load Map Fri Jul 20 11:59:22 2018
+Load Map Wed Aug 15 14:51:28 2018
 Global Cross Reference
 
 AIPS_Init           main.o                  0009ee

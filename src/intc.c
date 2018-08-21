@@ -3,7 +3,7 @@
 #include "intc.h"
 
 void dummy (void);
-extern void PIT_ISR(void);
+//defined in main.c but made visible here
 extern void __external_input_exception(void);
 
 
@@ -35,7 +35,8 @@ void Interrupt_SW(void)
 
 	".equ  INTC_EOIR2,  0xFFF48018  	# End Of Interrupt Register address				\n\t" \
 	"epilog:                    		# EPILOGUE											\n\t" \
-		"se_li   r4,0																		\n\t" \
+        	"mbar																		\n\t" \
+	        "se_li   r4,0																		\n\t" \
 		"e_lis   r3, INTC_EOIR2@ha      # Load upper half of EIOR address to r4				\n\t" \
 		"e_stw   r4, INTC_EOIR2@l(r3)	# Write 0 to INTC_EOIR, address 0xFFF4 8018			\n\t" \
 	
@@ -45,6 +46,7 @@ void Interrupt_SW(void)
 		"e_addi       r1,r1,(4*20)   	# Restore space on stack					\n\t" \
 		"se_rfi                         # End of Interrupt - re-enables interrupts.			\n\t" \
 	    "");
+
 }
 
 /**************************************************************************/
@@ -168,12 +170,43 @@ void INTC_Init(void)
 {
 
     asm volatile("mtivpr %0":: "r" (IVOR_table));	// Initialize exceptions: only need to load IVPR
+    asm volatile("mtivor0 %0":: "r" (0x00));
+    asm volatile("mtivor1 %0":: "r" (0x10));
+    asm volatile("mtivor2 %0":: "r" (0x20));
+    asm volatile("mtivor3 %0":: "r" (0x30));
     asm volatile("mtivor4 %0":: "r" (0x40));		// specifiy the offset from the IVOR_table
+    asm volatile("mtivor5 %0":: "r" (0x50));
+    asm volatile("mtivor6 %0":: "r" (0x60));
+    asm volatile("mtivor7 %0":: "r" (0x70));
+    asm volatile("mtivor8 %0":: "r" (0x80));
+    asm volatile("mtivor9 %0":: "r" (0x90));
+    asm volatile("mtivor10 %0":: "r" (0xA0));
+    asm volatile("mtivor11 %0":: "r" (0xb0));
+    asm volatile("mtivor12 %0":: "r" (0xc0));
+    asm volatile("mtivor13 %0":: "r" (0xd0));
+    asm volatile("mtivor14 %0":: "r" (0xe0));
+    asm volatile("mtivor15 %0":: "r" (0xf0));
+    asm volatile("mtivor32 %0":: "r" (0x00));
+    asm volatile("mtivor33 %0":: "r" (0x00));
+    asm volatile("mtivor34 %0":: "r" (0x00));
+
 
     INTC.MCR.R = 0;    					// Initialize INTC for software vector mode
 
     INTC.PSR[59].R = 0x05; 				// PIT Channel 0 - Priority register
     INTC.PSR[60].R = 0x05; 				// PIT Channel 0 - Priority register
+    INTC.PSR[65].R = 0x06; 
+    INTC.PSR[68].R = 0x06;
+    INTC.PSR[69].R = 0x06;
+    INTC.PSR[70].R = 0x06;
+    INTC.PSR[71].R = 0x06;
+    INTC.PSR[72].R = 0x06;
+    INTC.PSR[88].R = 0x06;
+    INTC.PSR[89].R = 0x06;
+    INTC.PSR[90].R = 0x06;
+    INTC.PSR[91].R = 0x06;
+    INTC.PSR[92].R = 0x06;
+    
 
     //set the enable bits or clear the maske bits
     INTC.CPR.R = 0; 		//INTC Current Priority Register for Processor is made 0x00 the lowest

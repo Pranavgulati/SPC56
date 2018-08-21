@@ -9,10 +9,22 @@
 #include "me.h"
 #include "pit.h"
 #include "intc.h"
+#include "flexcan.h"
 #include "interrupts56xx.h"
 
-
-
+/********************************************************************
+ *                     			                            *
+ *								    *
+ *                                                                  *
+ *                               				    *
+                                  NOTE
+ ********************************************************************/  
+/*
+  For adding any module following steps must be done
+  1. Enable the interrupts in the INTC module file by setting priority
+  2. Provide clock to the the module in the ME module by setting PCTL to zero
+  3. Now configure the module by calling its init(function)
+  */
 
 // FCCU module constants
 #define FCCU_BASE           0xFFE6C000  // FCCU module base address
@@ -83,28 +95,27 @@ void AIPS_Init(void)
 int main(void)
 {
 
-	AIPS_Init();			// Initialize AIPS bridge
+	AIPS_Init();				// Initialize AIPS bridge
 	ME_Init();				// Initialize all basic modules - ME, CGM, ...
-	INTC_Init();			// Initialize interrupt controller
-	PORT_PIN_SET2OUTPUT(PORT_PIN_B6); // clkout
+	INTC_Init();				// Initialize interrupt controller
 
-	// Initialize GPIO pin D[4] ID 9 (LQFP144) as output
-
-	SIU.PCR[PORT_PIN_C15].R=0x0200;
+        SIU.PCR[PORT_PIN_C15].R=0x0200;
 	SIU.PCR[PORT_PIN_C14].R=0x0200;
 	SIU.PCR[PORT_PIN_C13].R=0x0200;
-	
-	SIU.GPDO[PORT_PIN_C14].R = 0;
+	SIU.GPDO[PORT_PIN_C13].R = 1;
 	SIU.GPDO[PORT_PIN_C14].R = 1;
-	SIU.GPDO[PORT_PIN_C15].R = 0;
-
-	PIT_Init(1000);
-
-
-
+	SIU.GPDO[PORT_PIN_C15].R = 1;
+	
+	CAN_Init(MODULE_A,40);
+    	PIT_Init(5000);
+	
 	while(1)
 	{
-
+	    uint32_t i =0;
+	    for(i=0;i<1000000;i++){
+		asm volatile ("nop");
+	    }
+	    CAN_Tx(MODULE_A, 0xFF,0xF, 2, 9);
 	}
 }
 
@@ -117,13 +128,7 @@ int main(void)
 *******************************************************************************/
 void PIT_ISR(void)
 {
-	static uint32 Pit0Ctr;
-
-	Pit0Ctr++;              				/* Increment interrupt counter */
-		SIU.GPDO[PORT_PIN_C13].R = ~SIU.GPDO[PORT_PIN_C13].R;
-		SIU.GPDO[PORT_PIN_C14].R = ~SIU.GPDO[PORT_PIN_C14].R;
-		SIU.GPDO[PORT_PIN_C15].R = ~SIU.GPDO[PORT_PIN_C15].R;
-	PIT.CH[0].TFLG.B.TIF = 1;    		/* CLear PIT 1 flag by writing 1 */
+	PIT.CH[0].TFLG.B.TIF = 1;    	
 }
 
 
@@ -131,15 +136,110 @@ void PIT_ISR(void)
 void __external_input_exception() {
     switch(INTC.IACKR.B.INTVEC){
         case 59:
+	
+	    SIU.GPDO[PORT_PIN_C13].R = ~SIU.GPDO[PORT_PIN_C13].R;    	   
+
             /* Timer Interrupt */
-            PIT_ISR();
+
+	    PIT.CH[0].TFLG.B.TIF = 1; 
             break;
 	case 60:
             /* Timer Interrupt */
             //PIT_ISR();
-	    SIU.GPDO[PORT_PIN_C15].R = ~SIU.GPDO[PORT_PIN_C15].R;
+  	SIU.GPDO[PORT_PIN_C14].R = ~SIU.GPDO[PORT_PIN_C14].R;	
 	    PIT.CH[1].TFLG.B.TIF = 1;    	
             break;
+/*	case 65:
+ -             @/@*$ CAN_0 ERR_INT $*@/@
+ - 
+ -     	    SIU.GPDO[PORT_PIN_C15].R = ~SIU.GPDO[PORT_PIN_C15].R;
+ - 	
+ -             break;*/
+	case 68:
+
+	    CAN_0.IFRL.B.BUF00I=1;
+	    CAN_0.IFRL.B.BUF01I=1;
+	    CAN_0.IFRL.B.BUF02I=1;
+	    CAN_0.IFRL.B.BUF03I=1;
+	    break;
+	case 69:
+	    CAN_0.IFRL.B.BUF04I=1;
+	    CAN_0.IFRL.B.BUF05I=1;
+	    CAN_0.IFRL.B.BUF06I=1;
+	    CAN_0.IFRL.B.BUF07I=1;
+	    break;
+	case 70:
+	    CAN_0.IFRL.B.BUF08I=1;
+	    CAN_0.IFRL.B.BUF09I=1;
+	    CAN_0.IFRL.B.BUF10I=1;
+	    CAN_0.IFRL.B.BUF11I=1;
+	    break;
+	case 71:
+	    CAN_0.IFRL.B.BUF12I=1;
+	    CAN_0.IFRL.B.BUF13I=1;
+	    CAN_0.IFRL.B.BUF14I=1;
+	    CAN_0.IFRL.B.BUF15I=1;
+	    break;
+	case 72:
+	    CAN_0.IFRL.B.BUF16I=1;
+	    CAN_0.IFRL.B.BUF17I=1;
+	    CAN_0.IFRL.B.BUF18I=1;
+	    CAN_0.IFRL.B.BUF19I=1;
+	    CAN_0.IFRL.B.BUF20I=1;
+	    CAN_0.IFRL.B.BUF21I=1;
+	    CAN_0.IFRL.B.BUF22I=1;
+	    CAN_0.IFRL.B.BUF23I=1;
+	    CAN_0.IFRL.B.BUF24I=1;
+	    CAN_0.IFRL.B.BUF25I=1;
+	    CAN_0.IFRL.B.BUF26I=1;
+	    CAN_0.IFRL.B.BUF27I=1;
+	    CAN_0.IFRL.B.BUF28I=1;
+	    CAN_0.IFRL.B.BUF29I=1;
+	    CAN_0.IFRL.B.BUF30I=1;
+	    CAN_0.IFRL.B.BUF31I=1;
+	    break;
+	case 88:
+	    CAN_1.IFRL.B.BUF00I=1;
+	    CAN_1.IFRL.B.BUF01I=1;
+	    CAN_1.IFRL.B.BUF02I=1;
+	    CAN_1.IFRL.B.BUF03I=1;
+	    break;
+	case 89:
+	    CAN_1.IFRL.B.BUF04I=1;
+	    CAN_1.IFRL.B.BUF05I=1;
+	    CAN_1.IFRL.B.BUF06I=1;
+	    CAN_1.IFRL.B.BUF07I=1;
+	    break;
+	case 90:
+	    CAN_1.IFRL.B.BUF08I=1;
+	    CAN_1.IFRL.B.BUF09I=1;
+	    CAN_1.IFRL.B.BUF10I=1;
+	    CAN_1.IFRL.B.BUF11I=1;
+	    break;
+	case 91:
+	    CAN_1.IFRL.B.BUF12I=1;
+	    CAN_1.IFRL.B.BUF13I=1;
+	    CAN_1.IFRL.B.BUF14I=1;
+	    CAN_1.IFRL.B.BUF15I=1;
+	    break;
+	case 92:
+	    CAN_1.IFRL.B.BUF16I=1;
+	    CAN_1.IFRL.B.BUF17I=1;
+	    CAN_1.IFRL.B.BUF18I=1;
+	    CAN_1.IFRL.B.BUF19I=1;
+	    CAN_1.IFRL.B.BUF20I=1;
+	    CAN_1.IFRL.B.BUF21I=1;
+	    CAN_1.IFRL.B.BUF22I=1;
+	    CAN_1.IFRL.B.BUF23I=1;
+	    CAN_1.IFRL.B.BUF24I=1;
+	    CAN_1.IFRL.B.BUF25I=1;
+	    CAN_1.IFRL.B.BUF26I=1;
+	    CAN_1.IFRL.B.BUF27I=1;
+	    CAN_1.IFRL.B.BUF28I=1;
+	    CAN_1.IFRL.B.BUF29I=1;
+	    CAN_1.IFRL.B.BUF30I=1;
+	    CAN_1.IFRL.B.BUF31I=1;
+	    break;
     }
 
 }

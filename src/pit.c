@@ -24,7 +24,7 @@
 *******************************************************************************/
 void PIT_Init(uint32 reload)
 {
-	PIT.PITMCR.R = 0x0;
+	PIT.PITMCR.R = 0x1;
 	PIT.CH[0].LDVAL.R = reload*16000;
 	PIT.CH[0].TCTRL.B.TEN = 0x1;
 	PIT.CH[0].TCTRL.B.TIE = 0x1;

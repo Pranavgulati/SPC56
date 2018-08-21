@@ -63,11 +63,14 @@
 *******************************************************************************/
 void CAN_SetupPads(void)
 {
+     //SIU.GPDO[PORT_PIN_C14].R = 0;
     /* Setup FlexCAN 0 pins */
     /* TX (PB0) PA = 1 (AF1) / OBE = 1 / WPE = WPS = SRC (min value) = 0 */
- 	SIU.PCR[16].R  = 0x0600;
+ 	SIU.PCR[16].B.PA  = 1;
+	SIU.PCR[16].B.OBE = 1;
     /* RX (PB1) IBE = 1 */
-    SIU.PCR[17].B.IBE = 0x1;
+    SIU.PCR[17].B.IBE = 1;
+    SIU.PCR[17].B.PA = 1;
     /* Setup FlexCAN 1 pins */
     /* TX (PC10) PA = 1 (AF1) / OBE = 1 / WPE = WPS = SRC (min value) = 0 */
    // SIU.PCR[42].R  = 0x0600;
@@ -87,66 +90,112 @@ void CAN_SetupPads(void)
 *******************************************************************************/
 void CAN_Init (uint8_t module, uint8_t sysclk)
 {
+
+
+    CAN_SetupPads();
     uint32_t i;
-    
-    /** Module A *******************************/
+       /** Module A *******************************/
     if (module == MODULE_A){
-	CAN_0.MCR.B.MDIS = 0;	/* enable CAN peripheral */
-	/* Configure CAN MCR registers */
-	CAN_0.MCR.B.SOFTRST = 1; //bit 6
-		
-	while(CAN_0.MCR.B.SOFTRST == 1){};		
-		
-	CAN_0.MCR.B.FRZ = 1;  //bit 1
-	CAN_0.MCR.B.HALT = 1; //bit 3		
-	CAN_0.MCR.B.MAXMB = 0x3F; //bit 26 - 31
-	//CAN_0.MCR.B.BCC = 0x1;	/* backwards compatibility disable */
+    CAN_0.MCR.B.FRZ = 1;
+    /* leave freeze mode */
+    
+    CAN_0.CR.B.CLKSRC = 0;    
 
-	SetBaudRate(MODULE_A, 100000, sysclk);
-		
-	/* Configure Remaining Bits of CR */
-	CAN_0.CR.B.BOFFMSK = 0;
-	CAN_0.CR.B.ERRMSK = 0;	
-	CAN_0.CR.B.LPB = 0;
-	CAN_0.CR.B.SMP = 0;
-	CAN_0.CR.B.BOFFREC = 0;
-	CAN_0.CR.B.TSYN = 0;
-	CAN_0.CR.B.LOM = 0;
-	CAN_0.CR.B.LBUF = 1;	/* lowest number buffer is transmitted first */		
-	CAN_0.CR.B.CLKSRC = 0;	/* clock = oscillator clock */
 
-	/* Initialize/Clear all memory buffers */
-	for (i = 0; i < 64; i++)
-	{
-	    /* Put MB's in inactive state */
-	    CAN_0.BUF[i].CS.R = 0x00000000;
-				
-	    /* Clear ID */
-	    CAN_0.BUF[i].ID.R = 0x00000000;
-		
-	    /* Clear Data fields */
-	    CAN_0.BUF[i].DATA.W[0] = 0x00000000;
-	    CAN_0.BUF[i].DATA.W[1] = 0x00000000;
-	}
-		
-	/* Clear IFLAG registers */
-	CAN_0.IFRL.R = 0xFFFFFFFF;
-	CAN_0.IFRH.R = 0xFFFFFFFF;
+    /* module configuration register (MCR) */
+    /* enable CAN */
+    CAN_0.MCR.B.MDIS = 0;
+    /* backwards compatibility enabled */
+    CAN_0.MCR.B.BCC = 1;      
 
-	/* Configure IMASK Registers to enable interrupt requests */
-	CAN_0.IMRL.R = 0xFFFFFFFF;
-	CAN_0.IMRH.R = 0xFFFFFFFF;
-		
-	//Initialize MASK registers to check every bit
-	CAN_0.RXGMASK.R = 0x1FFFFFFF;
-	CAN_0.RX14MASK.R = 0x1FFFFFFF;
-	CAN_0.RX15MASK.R = 0x1FFFFFFF;
-		    
-	CAN_0.MCR.B.FRZ = 0;  //enable the module fully
-	CAN_0.MCR.B.AEN = 0;
-	CAN_0.ESR.B.BOFFINT = 0;
-	CAN_0.ESR.B.ERRINT = 0; 
-	CAN_0.MCR.B.HALT = 0x0;   //Clear Halt Bit
+    CAN_0.MCR.B.SUPV =0;
+    /* warning interrupt enabled */
+    CAN_0.MCR.B.WRNEN = 1;    
+    /* self reception disabled */
+    CAN_0.MCR.B.SRXDIS = 1; 
+    /* FIFO enabled */
+    CAN_0.MCR.B.FEN = 1;
+    /* ID Acceptance Mode - One full message ID is stored in every ID table entry */
+    CAN_0.MCR.B.IDAM = 0;
+    /* abort mechanism enabled */
+    CAN_0.MCR.B.AEN = 1; 
+    /* local priority enabled */
+    CAN_0.MCR.B.LPRIO_EN = 0;
+    /* maximum count of message buffers +1 */
+    CAN_0.MCR.B.MAXMB = 15;
+
+ 
+ for (i = 0; i < 64; i++)
+		{
+			/* Put MB's in inactive state */
+			CAN_0.BUF[i].CS.R = 0x00000000;
+
+			/* Clear ID */
+			CAN_0.BUF[i].ID.R = 0x00000000;
+
+			/* Clear Data fields */
+			CAN_0.BUF[i].DATA.W[0] = 0x00000000;
+			CAN_0.BUF[i].DATA.W[1] = 0x00000000;
+		}
+    /* 500 kbit/s */
+    /* propagation segment */
+    CAN_0.CR.B.PROPSEG = 2;
+    /* PSEG1 */
+    CAN_0.CR.B.PSEG1 = 1;    
+    /* PSEG2 */
+    CAN_0.CR.B.PSEG2 = 1;
+    /* resync jump width */
+    CAN_0.CR.B.RJW = 0;
+    /* prescaler */
+    CAN_0.CR.B.PRESDIV = 9;
+    /* Der MB mit der geringsten Nummer wird zuerst versendet */
+    CAN_0.CR.B.LBUF = 1;
+    /* loop back disabled */
+    CAN_0.CR.B.LPB = 0;
+
+   
+
+    /* FIFO ID Table */
+/*    for(i=0; i<8; i++)
+ -     {
+ -         CAN_0.RXFIFO.IDTABLE[i].R = 0;    
+ -     }*/
+
+    // Set Mask Register here
+    // Global Mask Register for FIFO (except IDT 6 and 7) 
+    // or for all MB (except 14 und 15)
+    CAN_0.RXGMASK.R = 0x00000000;
+    // Mask for FIFO ID Table 6 or MB 14
+    CAN_0.RX14MASK.R = 0x00000000;
+    // Mask for FIFO Id Table 7 or MB 15
+    CAN_0.RX15MASK.R = 0x00000000;
+    
+    /* Bus Off Interrupt */
+    CAN_0.CR.B.BOFFMSK = 1;    
+    /* Error Mask Interrupt */
+    CAN_0.CR.B.ERRMSK = 1;
+    /* Transmit Warning Interrupt */
+    CAN_0.CR.B.TWRNMSK = 1;
+    /* Receive Warning Interrupt */
+    CAN_0.CR.B.RWRNMSK = 1;
+    /* enable Wake Up interrupt */
+    CAN_0.MCR.B.WAKMSK = 1;
+
+    /* enable all message buffer interrupts */
+    CAN_0.IMRL.R = 0xFFFFFFFF;
+    /* clear all message buffer interrupts */
+    CAN_0.IFRL.R = 0xFFFFFFFF;
+
+    /* reset individual mask registers */
+    for(i=0; i<64; i++)
+    {
+        CAN_0.RXIMR[i].R = 0xFFFFFFFF;
+    }
+
+    CAN_0.MCR.B.FRZ = 0;
+    /* leave freeze mode */
+    CAN_0.MCR.B.HALT = 0;
+    
     } /* end if */ 
 
     /** Module B *******************************/
@@ -174,7 +223,7 @@ void CAN_Init (uint8_t module, uint8_t sysclk)
 		CAN_1.CR.B.TSYN = 0;
 		CAN_1.CR.B.LOM = 0;
 		CAN_1.CR.B.LBUF = 1;	/* lowest number buffer is transmitted first */
-		CAN_1.CR.B.CLKSRC = 0;	/* clock = oscillator clock */
+		CAN_1.CR.B.CLKSRC = 1;	/* clock = oscillator clock */
 		
 		/* Initialize/Clear all memory buffers */
 		for (i = 0; i < 64; i++)
@@ -209,6 +258,7 @@ void CAN_Init (uint8_t module, uint8_t sysclk)
 		CAN_1.ESR.B.ERRINT = 0;
 		CAN_1.MCR.B.HALT = 0x0;		//Clear Halt Bit
     }
+
 }
 
 
@@ -296,49 +346,28 @@ INPUTS NOTES    : module - MODULE_A, MODULE_B, or MODULE_C.
 RETURNS NOTES   : NA
 GENERAL NOTES   :  
 *******************************************************************************/ 
-void CAN_Tx(uint8_t module, uint32_t data, uint8_t data_inc, uint8_t length, uint8_t buf)
+void CAN_Tx(uint8_t module, uint32_t data, uint8_t id, uint8_t length, uint8_t buf)
 {	
     uint16_t i, timer;
- 
-	if (module == MODULE_A)
-	{
+
 	    // Clear Data fields
 	    CAN_0.BUF[buf].DATA.W[0] = 0x00000000;
 	    CAN_0.BUF[buf].DATA.W[1] = 0x00000000;
 	    // Hold the transmit buffer inactive
 	    CAN_0.BUF[buf].CS.B.CODE = 0x8;
-	    CAN_0.BUF[buf].CS.B.SRR = 1;
+	    CAN_0.BUF[buf].CS.B.SRR = 0;
 	    CAN_0.BUF[buf].CS.B.RTR = 0x0;
 	    CAN_0.BUF[buf].CS.B.IDE = 0x0;
 	    // Write standard MB IDs
-	    CAN_0.BUF[buf].ID.R = (uint32_t)(data << 18);
+	    CAN_0.BUF[buf].ID.B.STD_ID =id;
 	    //Write data 
 	    CAN_0.BUF[buf].DATA.W[0] = (uint32_t)data;
 	    // Write length = 0x4 (4 Bytes long), Code = C (Transmit)
-	    CAN_0.BUF[buf].CS.B.LENGTH = length;
+	    CAN_0.BUF[buf].CS.B.LENGTH = 4;
 	    CAN_0.BUF[buf].CS.B.CODE = 0xC;
-	    while (CAN_0.BUF[buf].CS.B.CODE != 0x8);
-	    
-	} /* end if */
+	    //while (CAN_0.BUF[buf].CS.B.CODE != 0x8);
 
-	if (module == MODULE_B) {
-	    // Clear Data fields
-	    CAN_1.BUF[buf].DATA.W[0] = 0x00000000;
-	    CAN_1.BUF[buf].DATA.W[1] = 0x00000000;
-	    // Hold the transmit buffer inactive
-	    CAN_1.BUF[buf].CS.B.CODE = 0x8;
-	    CAN_1.BUF[buf].CS.B.SRR = 0x1;		
-	    CAN_1.BUF[buf].CS.B.RTR = 0x0;
-	    CAN_1.BUF[buf].CS.B.IDE = 0x0;		
-	    // Write standard MB IDs
-	    CAN_1.BUF[buf].ID.R = (uint32_t)(data << 18);
-	    //Write data 
-	    CAN_1.BUF[buf].DATA.W[0] = (uint32_t)data;
-	    // Write length = 0x4 (4 Bytes long), Code = C (Transmit)
-	    CAN_1.BUF[buf].CS.B.LENGTH = length;
-	    CAN_1.BUF[buf].CS.B.CODE = 0xC;
-	    while (CAN_1.BUF[buf].CS.B.CODE != 0x8);
-	} /* end if */
+
 }
 
 
@@ -888,8 +917,8 @@ void SetBaudRate (uint8_t module, uint32_t baud, uint8_t sysclk)
  - 	}*/
 	
 
-	presdiv = ((sysclk * 1000000) / (baud * 8))*5 - 1;
-	rjw = 1;
+	presdiv = 9;
+	rjw = 0;
 	pseg1 = 1;
 	pseg2 = 1;
 	propseg = 2;
